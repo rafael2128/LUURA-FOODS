@@ -244,7 +244,9 @@ function validarDados(d, aviso) {
         : !emailValido(d.email) ? 'Digite um e-mail válido.'
         : d.cpf.length !== 14 ? 'Digite o CPF completo.'
         : d.telefone.length < 14 ? 'Digite o telefone completo com DDD.'
-        : d.cep && d.cep.length !== 9 ? 'Digite o CEP completo.' : '';
+        : d.cep.length !== 9 ? 'Digite o CEP completo.'
+        : d.endereco.length < 3 ? 'Digite seu endereço.'
+        : !d.numero ? 'Digite o número da casa.' : '';
     avisar(aviso, erro);
     return !erro;
 }
@@ -271,6 +273,7 @@ function entrar(nome){
     localStorage.setItem('lura_usuario', nome);
     atualizarBotoesConta();
     fecharModalAuth();
+    if (document.getElementById('perfilform')) carregarPerfil();
 }
 
 function executarLogin(e){
@@ -286,40 +289,54 @@ function executarLogin(e){
 
 function executarCadastro(e) {
     e.preventDefault();
-    const dados = { nome: valor('cadnome'), email: valor('cademail'), cpf: valor('cadcpf'), telefone: valor('cadtelefone') };
-    const senha = document.getElementById('cadsenha').value;
+    criarConta('cad', 'avisocadastro');
+}
 
-    if (!validarDados(dados, 'avisocadastro')) return;
-    if (senha.length < 6) return avisar('avisocadastro', 'A senha precisa ter pelo menos 6 caracteres.');
-    if (senha !== document.getElementById('cadconfirmasenha').value) return avisar('avisocadastro', 'As senhas não são iguais.');
+function criarConta(prefixo, aviso) {
+    const dados = lerDados(prefixo);
+    const senha = document.getElementById(prefixo + 'senha').value;
+
+    if (!validarDados(dados, aviso)) return false;
+    if (senha.length < 6) return avisar(aviso, 'A senha precisa ter pelo menos 6 caracteres.');
+    if (senha !== document.getElementById(prefixo + 'confirmasenha').value) return avisar(aviso, 'As senhas não são iguais.');
 
     localStorage.setItem('lura_dados', JSON.stringify(dados));
     entrar(dados.nome.split(' ')[0]);
+    return true;
 }
 
 
-const camposPerfil = ['nome', 'email', 'cpf', 'telefone', 'cep', 'endereco', 'numero'];
+const campos = ['nome', 'email', 'cpf', 'telefone', 'cep', 'endereco', 'numero'];
+
+function lerDados(prefixo) {
+    const dados = {};
+    campos.forEach(c => dados[c] = valor(prefixo + c));
+    return dados;
+}
 
 function carregarPerfil() {
-    const dados = JSON.parse(localStorage.getItem('lura_dados')) || {};
-    camposPerfil.forEach(c => document.getElementById('perfil' + c).value = dados[c] || '');
-    document.getElementById('perfilpedidos').innerText = pedidos.length;
+    const logado = localStorage.getItem('lura_usuario');
+    const dados = logado ? JSON.parse(localStorage.getItem('lura_dados')) || {} : {};
 
-    if (!localStorage.getItem('lura_usuario')) {
-        avisar('avisoperfil', 'Você não está logado. Preencha seus dados e salve para criar sua conta.');
-        document.getElementById('botaosair').style.display = 'none';
-    }
+    campos.forEach(c => document.getElementById('perfil' + c).value = dados[c] || '');
+    document.getElementById('perfilpedidos').innerText = pedidos.length;
+    document.getElementById('perfiltitulo').innerText = logado ? 'Meus Dados' : 'Criar Conta';
+    document.getElementById('perfilbotao').innerText = logado ? 'Salvar Dados' : 'Criar Conta';
+    document.getElementById('perfilsenhas').style.display = logado ? 'none' : '';
+    document.getElementById('botaosair').style.display = logado ? '' : 'none';
 }
 
 function salvarPerfil(e) {
     e.preventDefault();
-    const dados = {};
-    camposPerfil.forEach(c => dados[c] = valor('perfil' + c));
-    if (!validarDados(dados, 'avisoperfil')) return;
+    if (!localStorage.getItem('lura_usuario')) {
+        if (criarConta('perfil', 'avisoperfil')) avisar('avisoperfil', 'Conta criada com sucesso!', '#16A34A');
+        return;
+    }
 
+    const dados = lerDados('perfil');
+    if (!validarDados(dados, 'avisoperfil')) return;
     localStorage.setItem('lura_dados', JSON.stringify(dados));
     entrar(dados.nome.split(' ')[0]);
-    document.getElementById('botaosair').style.display = '';
     avisar('avisoperfil', 'Dados salvos com sucesso!', '#16A34A');
 }
 

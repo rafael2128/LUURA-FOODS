@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>Lura Foods | Contato</title>
     <link rel="icon" type="image/gif" href="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7">
 
 
@@ -37,11 +37,15 @@
             <button id="botaoredondo" onclick="toggleDarkMode()" title="Alternar modo escuro">
                 <svg id="iconetema" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path></svg>
             </button>
-            <button id="botaoconta" onclick="abrirModalAuth()" title="Minha conta">
+            <button id="botaoconta" onclick="minhaConta()" title="Minha conta">
                 <svg fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" viewBox="0 0 24 24"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"></path><circle cx="12" cy="7" r="4"></circle></svg>
                 <span id="nomeusuario">Entrar</span>
            </button>
 
+            <span id="botaocadastro"><button id="botaoconta" onclick="abrirModalAuth('cadastro')" title="Criar conta">
+                <svg fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" viewBox="0 0 24 24"><path d="M16 21v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2"></path><circle cx="9" cy="7" r="4"></circle><line x1="19" y1="8" x2="19" y2="14"></line><line x1="22" y1="11" x2="16" y2="11"></line></svg>
+                <span id="textocadastro">Cadastrar</span>
+            </button></span>
             <a id="botaoredondo" href="carrinho.html" title="Carrinho">
                 <svg fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" viewBox="0 0 24 24"><circle cx="9" cy="21" r="1"></circle><circle cx="20" cy="21" r="1"></circle><path d="M1 1h4l2.68 13.39a2 2 0 0 0 2 1.61h9.72a2 2 0 0 0 2-1.61L23 6H6"></path></svg>
                 <span id="contadorcarrinho">0</span>
@@ -61,7 +65,7 @@
         <nav id="menulinks">
             <a id="menulink" href="index.html">Catálogo de Produtos</a>
             <a id="menulink" href="carrinho.html">Carrinho E Pedidos</a> <a id="menulink" href="contato.html">Fale Conosco / Contato</a>
-            <button id="menulink" onclick="abrirModalAuth(); fecharDrawer();">Minha Conta</button>
+            <button id="menulink" onclick="minhaConta(); fecharDrawer();">Minha Conta</button>
             <button id="menulink" onclick="toggleDarkMode(); fecharDrawer();">
                 <span>Modo Escuro / Claro</span> <span id="iconetemamenu">🌙</span>
               </button> </nav>
@@ -91,21 +95,21 @@
                  <h3>Envie uma Mensagem</h3>
                 <form novalidate onsubmit="enviarContato(event)"> <div id="campogrupo">
                       <label id="campotitulo" for="contatonome">Seu Nome</label>
-                        <input type="text"  id="contatonome" placeholder="Digite seu nome completo">
+                        <input type="text"  id="contatonome" maxlength="60" placeholder="Digite seu nome completo">
                     </div>
                     <div id="campogrupo">
                         <label id="campotitulo" for="contatoemail">E-mail</label>
-                        <input type="email" id="contatoemail" placeholder="seuemail@exemplo.com">
+                        <input type="email" id="contatoemail" maxlength="80" placeholder="seuemail@exemplo.com">
                     </div>
 
                     <div id="campogrupo">
                         <label id="campotitulo" for="contatoassunto">Assunto</label>
-                          <input type="text" id="contatoassunto" placeholder="Ex: Elogio, Dúvida ou Reclamação">
+                          <input type="text" id="contatoassunto" maxlength="60" placeholder="Ex: Elogio, Dúvida ou Reclamação">
                     </div>
 
                     <div id="campogrupo">
                         <label id="campotitulo" for="contatomensagem">Mensagem</label>
-                        <textarea id="contatomensagem" rows="4" placeholder="Escreva sua mensagem..."></textarea>
+                        <textarea id="contatomensagem" maxlength="500" rows="4" placeholder="Escreva sua mensagem..."></textarea>
                    </div>
                  <button id="botaodourado" type="submit">Enviar Mensagem</button>
                   </form>
@@ -155,6 +159,7 @@
 
         <a id="botaobarra" href="index.html">Catálogo de Produtos</a>
         <a id="botaobarra" href="carrinho.html">Carrinho E Pedidos</a> <a id="paginaatual" href="contato.html">Contato</a>
+        <a id="botaobarra" href="perfil.html">Perfil</a>
  </nav>
 
 
@@ -215,8 +220,8 @@
                 <div id="formlogin">
                       <h2>LOGIN</h2>
                     <form novalidate onsubmit="executarLogin(event)">
-                        <input type="email"  id="loginemail" placeholder="INSIRA SEU E-MAIL">
-                      <input type="password"  id="loginsenha" placeholder="INSIRA SUA SENHA"> <button id="botaodourado" type="submit">Enviar</button>
+                        <input type="email"  id="loginemail" maxlength="80" placeholder="INSIRA SEU E-MAIL">
+                      <input type="password"  id="loginsenha" maxlength="20" placeholder="INSIRA SUA SENHA"> <p id="avisologin"></p> <button id="botaodourado" type="submit">Enviar</button>
 
                         <div id="janelarodape">
                             <p>Não tem uma conta?<br>Crie uma</p>
@@ -229,11 +234,11 @@
                     <h2>CRIAR CONTA</h2>
                     <form novalidate onsubmit="executarCadastro(event)">
 
-                        <input type="text" id="cadnome" placeholder="NOME COMPLETO">
-                        <input type="email" id="cademail" placeholder="SEU E-MAIL">
+                        <input type="text" id="cadnome" maxlength="60" placeholder="NOME COMPLETO">
+                        <input type="email" id="cademail" maxlength="80" placeholder="SEU E-MAIL"> <input type="text" id="cadcpf" maxlength="14" inputmode="numeric" oninput="mascaraCPF(this)" placeholder="CPF (000.000.000-00)"> <input type="tel" id="cadtelefone" maxlength="15" inputmode="numeric" oninput="mascaraTelefone(this)" placeholder="TELEFONE ((31) 99999-9999)">
      
 
-                        <input type="password" id="cadsenha" placeholder="CRIE SUA SENHA"> <input type="password" id="cadconfirmasenha" placeholder="CONFIRME SUA SENHA">
+                        <input type="password" id="cadsenha" maxlength="20" placeholder="CRIE SUA SENHA"> <input type="password" id="cadconfirmasenha" maxlength="20" placeholder="CONFIRME SUA SENHA"> <p id="avisocadastro"></p>
                         <button id="botaodourado" type="submit">Cadastrar</button>
 
                         <div id="janelarodape">

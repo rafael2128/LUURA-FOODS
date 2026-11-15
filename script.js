@@ -17,10 +17,17 @@ let carrinho = JSON.parse(localStorage.getItem('lura_carrinho')) || [
 ];
 carrinho = carrinho.filter(item => item.preco > 0 && item.quantidade > 0);
 
+let pedidos = JSON.parse(localStorage.getItem('lura_pedidos')) || [
+    { numero: 2, data: '10/11/2026', itens: [{ nome: "SMASH DOUBLE CHEESE", preco: 30, quantidade: 1, imagem: "smashdouble.jpg" }], total: 30 },
+    { numero: 1, data: '05/11/2026', itens: [{ nome: "LURA BACON BURGER", preco: 30, quantidade: 1, imagem: "baconsupreme.jpg" }], total: 30 }
+];
+
 document.addEventListener("DOMContentLoaded", () => {
     atualizarIconeTema();
     atualizarCarrinho();
-    document.getElementById('nomeusuario').innerText = localStorage.getItem('lura_usuario') || 'Entrar';
+    atualizarBotoesConta();
+    renderizarPedidos();
+    if (document.getElementById('perfilform')) carregarPerfil();
 
     if (document.getElementById('produtos')) {
           const termo = new URLSearchParams(location.search).get('q');
@@ -149,14 +156,53 @@ function adicionarProduto(id) {
 }
 
 function finalizarCompra() {
+    if (!carrinho.length) return;
+
+    const total = carrinho.reduce((soma, item) => soma + item.preco * item.quantidade, 0);
+    pedidos.unshift({
+        numero: pedidos.length + 1,
+        data: new Date().toLocaleDateString('pt-BR'),
+        itens: carrinho,
+        total: total
+    });
+    localStorage.setItem('lura_pedidos', JSON.stringify(pedidos));
+
     carrinho = [];
     atualizarCarrinho();
+    renderizarPedidos();
 }
 
 
- function abrirModalAuth() {
+function renderizarPedidos() {
+    const grade = document.getElementById('repetirgrade');
+    if (!grade) return;
+
+    grade.innerHTML = pedidos.length ? '' : '<p id="carrinhovazio">Você ainda não fez nenhum pedido.</p>';
+    pedidos.forEach((pedido, i) => {
+        grade.innerHTML += `
+            <div id="repetir">
+                <div>
+                    <h3>PEDIDO #${pedido.numero}</h3>
+                    <span id="textocinza">${pedido.data} - ${pedido.itens.map(item => item.quantidade + 'x ' + item.nome).join(', ')}</span>
+                    <p>${formatarPreco(pedido.total)}</p>
+                    <button id="botaodourado" onclick="pedirDeNovo(${i})">Pedir de novo</button>
+                </div>
+                <img src="${pedido.itens[0].imagem}" alt="${pedido.itens[0].nome}">
+            </div>`;
+    });
+}
+
+
+function pedirDeNovo(i) {
+    pedidos[i].itens.forEach(item => {
+        for (let q = 0; q < item.quantidade; q++) adicionarAoCarrinho(item.nome, item.preco, item.imagem);
+    });
+}
+
+
+function abrirModalAuth(tipo) {
     document.getElementById('janelalogin').style.display = 'flex';
-  alternarFormAuth('login');
+    alternarFormAuth(tipo || 'login');
 }
 
 
@@ -167,25 +213,146 @@ function fecharModalAuth() {
 function alternarFormAuth(tipo) {
     document.getElementById('formlogin').style.display = tipo === 'login' ? 'block' : 'none';
     document.getElementById('formcadastro').style.display = tipo === 'cadastro' ? 'block' : 'none';
+    avisar('avisologin', '');
+    avisar('avisocadastro', '');
 }
 
+function minhaConta() {
+    if (localStorage.getItem('lura_usuario')) location.href = 'perfil.html';
+    else abrirModalAuth('login');
+}
+
+function atualizarBotoesConta() {
+    const nome = localStorage.getItem('lura_usuario');
+    document.getElementById('nomeusuario').innerText = nome || 'Entrar';
+
+    const cadastro = document.getElementById('botaocadastro');
+    if (cadastro) cadastro.style.display = nome ? 'none' : '';
+}
+
+function avisar(id, texto, cor) {
+    const aviso = document.getElementById(id);
+    if (!aviso) return;
+    aviso.innerText = texto;
+    aviso.style.color = cor || '#B81D13';
+}
+
+function emailValido(email) {
+    return email.includes('@') && email.includes('.') && email.length >= 6;
+}
+
+
+// mascaras e campos numericos
+
+function somenteNumeros(campo) {
+    campo.value = campo.value.replace(/\D/g, '');
+}
+
+function mascaraCPF(campo) {
+    let v = campo.value.replace(/\D/g, '').slice(0, 11);
+    v = v.replace(/(\d{3})(\d)/, '$1.$2');
+    v = v.replace(/(\d{3})(\d)/, '$1.$2');
+    v = v.replace(/(\d{3})(\d{1,2})$/, '$1-$2');
+    campo.value = v;
+}
+
+function mascaraTelefone(campo) {
+    let v = campo.value.replace(/\D/g, '').slice(0, 11);
+    v = v.replace(/^(\d{2})(\d)/, '($1) $2');
+    v = v.replace(/(\d)(\d{4})$/, '$1-$2');
+    campo.value = v;
+}
+
+function mascaraCEP(campo) {
+    const v = campo.value.replace(/\D/g, '').slice(0, 8);
+    campo.value = v.replace(/(\d{5})(\d)/, '$1-$2');
+}
+
+
 function entrar(nome){
-    if (nome) {
-        localStorage.setItem('lura_usuario', nome);
-        document.getElementById('nomeusuario').innerText = nome;
-    }
+    localStorage.setItem('lura_usuario', nome);
+    atualizarBotoesConta();
     fecharModalAuth();
 }
 
 function executarLogin(e){
     e.preventDefault();
-    entrar(document.getElementById('loginemail').value.split('@')[0]);
+    const email = document.getElementById('loginemail').value.trim();
+    const senha = document.getElementById('loginsenha').value;
+
+    if (!emailValido(email)) return avisar('avisologin', 'Digite um e-mail válido.');
+    if (senha.length < 6) return avisar('avisologin', 'A senha precisa ter pelo menos 6 caracteres.');
+
+    const dados = JSON.parse(localStorage.getItem('lura_dados')) || {};
+    entrar(dados.email === email ? dados.nome.split(' ')[0] : email.split('@')[0]);
 }
 
 
 function executarCadastro(e) {
     e.preventDefault();
-    entrar(document.getElementById('cadnome').value);
+    const dados = {
+        nome: document.getElementById('cadnome').value.trim(),
+        email: document.getElementById('cademail').value.trim(),
+        cpf: document.getElementById('cadcpf').value,
+        telefone: document.getElementById('cadtelefone').value
+    };
+    const senha = document.getElementById('cadsenha').value;
+    const confirma = document.getElementById('cadconfirmasenha').value;
+
+    if (dados.nome.length < 3) return avisar('avisocadastro', 'Digite seu nome completo.');
+    if (!emailValido(dados.email)) return avisar('avisocadastro', 'Digite um e-mail válido.');
+    if (dados.cpf.length !== 14) return avisar('avisocadastro', 'Digite o CPF completo.');
+    if (dados.telefone.length < 14) return avisar('avisocadastro', 'Digite o telefone completo com DDD.');
+    if (senha.length < 6) return avisar('avisocadastro', 'A senha precisa ter pelo menos 6 caracteres.');
+    if (senha !== confirma) return avisar('avisocadastro', 'As senhas não são iguais.');
+
+    localStorage.setItem('lura_dados', JSON.stringify(dados));
+    entrar(dados.nome.split(' ')[0]);
+}
+
+
+// pagina de perfil
+
+const camposPerfil = ['nome', 'email', 'cpf', 'telefone', 'cep', 'endereco', 'numero'];
+
+function carregarPerfil() {
+    const dados = JSON.parse(localStorage.getItem('lura_dados')) || {};
+    camposPerfil.forEach(campo => {
+        document.getElementById('perfil' + campo).value = dados[campo] || '';
+    });
+
+    document.getElementById('perfilpedidos').innerText = pedidos.length;
+    document.getElementById('perfilgasto').innerText = formatarPreco(pedidos.reduce((soma, pedido) => soma + pedido.total, 0));
+
+    if (!localStorage.getItem('lura_usuario')) {
+        avisar('avisoperfil', 'Você não está logado. Preencha seus dados e salve para criar sua conta.');
+        document.getElementById('botaosair').style.display = 'none';
+    }
+}
+
+function salvarPerfil(e) {
+    e.preventDefault();
+    const dados = {};
+    camposPerfil.forEach(campo => {
+        dados[campo] = document.getElementById('perfil' + campo).value.trim();
+    });
+
+    if (dados.nome.length < 3) return avisar('avisoperfil', 'Digite seu nome completo.');
+    if (!emailValido(dados.email)) return avisar('avisoperfil', 'Digite um e-mail válido.');
+    if (dados.cpf.length !== 14) return avisar('avisoperfil', 'Digite o CPF completo.');
+    if (dados.telefone.length < 14) return avisar('avisoperfil', 'Digite o telefone completo com DDD.');
+    if (dados.cep && dados.cep.length !== 9) return avisar('avisoperfil', 'Digite o CEP completo.');
+
+    localStorage.setItem('lura_dados', JSON.stringify(dados));
+    localStorage.setItem('lura_usuario', dados.nome.split(' ')[0]);
+    atualizarBotoesConta();
+    document.getElementById('botaosair').style.display = '';
+    avisar('avisoperfil', 'Dados salvos com sucesso!', '#16A34A');
+}
+
+function sairConta() {
+    localStorage.removeItem('lura_usuario');
+    location.href = 'index.html';
 }
 
 
@@ -193,6 +360,3 @@ function enviarContato(e){
     e.preventDefault();
     e.target.reset();
 }
-
-
-

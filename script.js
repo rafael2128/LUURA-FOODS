@@ -157,41 +157,31 @@ function adicionarProduto(id) {
 
 function finalizarCompra() {
     if (!carrinho.length) return;
-
-    const total = carrinho.reduce((soma, item) => soma + item.preco * item.quantidade, 0);
-    pedidos.unshift({
-        numero: pedidos.length + 1,
-        data: new Date().toLocaleDateString('pt-BR'),
-        itens: carrinho,
-        total: total
-    });
+    pedidos.unshift({ numero: pedidos.length + 1, data: new Date().toLocaleDateString('pt-BR'), itens: carrinho, total: carrinho.reduce((soma, item) => soma + item.preco * item.quantidade, 0) });
     localStorage.setItem('lura_pedidos', JSON.stringify(pedidos));
-
     carrinho = [];
     atualizarCarrinho();
     renderizarPedidos();
 }
-
 
 function renderizarPedidos() {
     const grade = document.getElementById('repetirgrade');
     if (!grade) return;
 
     grade.innerHTML = pedidos.length ? '' : '<p id="carrinhovazio">Você ainda não fez nenhum pedido.</p>';
-    pedidos.forEach((pedido, i) => {
+    pedidos.forEach((p, i) => {
         grade.innerHTML += `
             <div id="repetir">
                 <div>
-                    <h3>PEDIDO #${pedido.numero}</h3>
-                    <span id="textocinza">${pedido.data} - ${pedido.itens.map(item => item.quantidade + 'x ' + item.nome).join(', ')}</span>
-                    <p>${formatarPreco(pedido.total)}</p>
+                    <h3>PEDIDO #${p.numero}</h3>
+                    <span id="textocinza">${p.data} - ${p.itens.map(item => item.quantidade + 'x ' + item.nome).join(', ')}</span>
+                    <p>${formatarPreco(p.total)}</p>
                     <button id="botaodourado" onclick="pedirDeNovo(${i})">Pedir de novo</button>
                 </div>
-                <img src="${pedido.itens[0].imagem}" alt="${pedido.itens[0].nome}">
+                <img src="${p.itens[0].imagem}" alt="${p.itens[0].nome}">
             </div>`;
     });
 }
-
 
 function pedirDeNovo(i) {
     pedidos[i].itens.forEach(item => {
@@ -218,16 +208,13 @@ function alternarFormAuth(tipo) {
 }
 
 function minhaConta() {
-    if (localStorage.getItem('lura_usuario')) location.href = 'perfil.html';
-    else abrirModalAuth('login');
+    localStorage.getItem('lura_usuario') ? location.href = 'perfil.html' : abrirModalAuth('login');
 }
 
 function atualizarBotoesConta() {
     const nome = localStorage.getItem('lura_usuario');
     document.getElementById('nomeusuario').innerText = nome || 'Entrar';
-
-    const cadastro = document.getElementById('botaocadastro');
-    if (cadastro) cadastro.style.display = nome ? 'none' : '';
+    if (document.getElementById('botaocadastro')) document.getElementById('botaocadastro').style.display = nome ? 'none' : '';
 }
 
 function avisar(id, texto, cor) {
@@ -237,35 +224,39 @@ function avisar(id, texto, cor) {
     aviso.style.color = cor || '#B81D13';
 }
 
+function valor(id) {
+    return document.getElementById(id).value.trim();
+}
+
 function emailValido(email) {
     return email.includes('@') && email.includes('.') && email.length >= 6;
 }
 
+function validarDados(d, aviso) {
+    const erro = d.nome.length < 3 ? 'Digite seu nome completo.'
+        : !emailValido(d.email) ? 'Digite um e-mail válido.'
+        : d.cpf.length !== 14 ? 'Digite o CPF completo.'
+        : d.telefone.length < 14 ? 'Digite o telefone completo com DDD.'
+        : d.cep && d.cep.length !== 9 ? 'Digite o CEP completo.' : '';
+    avisar(aviso, erro);
+    return !erro;
+}
 
-// mascaras e campos numericos
 
 function somenteNumeros(campo) {
     campo.value = campo.value.replace(/\D/g, '');
 }
 
 function mascaraCPF(campo) {
-    let v = campo.value.replace(/\D/g, '').slice(0, 11);
-    v = v.replace(/(\d{3})(\d)/, '$1.$2');
-    v = v.replace(/(\d{3})(\d)/, '$1.$2');
-    v = v.replace(/(\d{3})(\d{1,2})$/, '$1-$2');
-    campo.value = v;
+    campo.value = campo.value.replace(/\D/g, '').slice(0, 11).replace(/(\d{3})(\d)/, '$1.$2').replace(/(\d{3})(\d)/, '$1.$2').replace(/(\d{3})(\d{1,2})$/, '$1-$2');
 }
 
 function mascaraTelefone(campo) {
-    let v = campo.value.replace(/\D/g, '').slice(0, 11);
-    v = v.replace(/^(\d{2})(\d)/, '($1) $2');
-    v = v.replace(/(\d)(\d{4})$/, '$1-$2');
-    campo.value = v;
+    campo.value = campo.value.replace(/\D/g, '').slice(0, 11).replace(/^(\d{2})(\d)/, '($1) $2').replace(/(\d)(\d{4})$/, '$1-$2');
 }
 
 function mascaraCEP(campo) {
-    const v = campo.value.replace(/\D/g, '').slice(0, 8);
-    campo.value = v.replace(/(\d{5})(\d)/, '$1-$2');
+    campo.value = campo.value.replace(/\D/g, '').slice(0, 8).replace(/(\d{5})(\d)/, '$1-$2');
 }
 
 
@@ -277,52 +268,36 @@ function entrar(nome){
 
 function executarLogin(e){
     e.preventDefault();
-    const email = document.getElementById('loginemail').value.trim();
-    const senha = document.getElementById('loginsenha').value;
+    const email = valor('loginemail');
+    const dados = JSON.parse(localStorage.getItem('lura_dados')) || {};
 
     if (!emailValido(email)) return avisar('avisologin', 'Digite um e-mail válido.');
-    if (senha.length < 6) return avisar('avisologin', 'A senha precisa ter pelo menos 6 caracteres.');
-
-    const dados = JSON.parse(localStorage.getItem('lura_dados')) || {};
+    if (document.getElementById('loginsenha').value.length < 6) return avisar('avisologin', 'A senha precisa ter pelo menos 6 caracteres.');
     entrar(dados.email === email ? dados.nome.split(' ')[0] : email.split('@')[0]);
 }
 
 
 function executarCadastro(e) {
     e.preventDefault();
-    const dados = {
-        nome: document.getElementById('cadnome').value.trim(),
-        email: document.getElementById('cademail').value.trim(),
-        cpf: document.getElementById('cadcpf').value,
-        telefone: document.getElementById('cadtelefone').value
-    };
+    const dados = { nome: valor('cadnome'), email: valor('cademail'), cpf: valor('cadcpf'), telefone: valor('cadtelefone') };
     const senha = document.getElementById('cadsenha').value;
-    const confirma = document.getElementById('cadconfirmasenha').value;
 
-    if (dados.nome.length < 3) return avisar('avisocadastro', 'Digite seu nome completo.');
-    if (!emailValido(dados.email)) return avisar('avisocadastro', 'Digite um e-mail válido.');
-    if (dados.cpf.length !== 14) return avisar('avisocadastro', 'Digite o CPF completo.');
-    if (dados.telefone.length < 14) return avisar('avisocadastro', 'Digite o telefone completo com DDD.');
+    if (!validarDados(dados, 'avisocadastro')) return;
     if (senha.length < 6) return avisar('avisocadastro', 'A senha precisa ter pelo menos 6 caracteres.');
-    if (senha !== confirma) return avisar('avisocadastro', 'As senhas não são iguais.');
+    if (senha !== document.getElementById('cadconfirmasenha').value) return avisar('avisocadastro', 'As senhas não são iguais.');
 
     localStorage.setItem('lura_dados', JSON.stringify(dados));
     entrar(dados.nome.split(' ')[0]);
 }
 
 
-// pagina de perfil
-
 const camposPerfil = ['nome', 'email', 'cpf', 'telefone', 'cep', 'endereco', 'numero'];
 
 function carregarPerfil() {
     const dados = JSON.parse(localStorage.getItem('lura_dados')) || {};
-    camposPerfil.forEach(campo => {
-        document.getElementById('perfil' + campo).value = dados[campo] || '';
-    });
-
+    camposPerfil.forEach(c => document.getElementById('perfil' + c).value = dados[c] || '');
     document.getElementById('perfilpedidos').innerText = pedidos.length;
-    document.getElementById('perfilgasto').innerText = formatarPreco(pedidos.reduce((soma, pedido) => soma + pedido.total, 0));
+    document.getElementById('perfilgasto').innerText = formatarPreco(pedidos.reduce((soma, p) => soma + p.total, 0));
 
     if (!localStorage.getItem('lura_usuario')) {
         avisar('avisoperfil', 'Você não está logado. Preencha seus dados e salve para criar sua conta.');
@@ -333,19 +308,11 @@ function carregarPerfil() {
 function salvarPerfil(e) {
     e.preventDefault();
     const dados = {};
-    camposPerfil.forEach(campo => {
-        dados[campo] = document.getElementById('perfil' + campo).value.trim();
-    });
-
-    if (dados.nome.length < 3) return avisar('avisoperfil', 'Digite seu nome completo.');
-    if (!emailValido(dados.email)) return avisar('avisoperfil', 'Digite um e-mail válido.');
-    if (dados.cpf.length !== 14) return avisar('avisoperfil', 'Digite o CPF completo.');
-    if (dados.telefone.length < 14) return avisar('avisoperfil', 'Digite o telefone completo com DDD.');
-    if (dados.cep && dados.cep.length !== 9) return avisar('avisoperfil', 'Digite o CEP completo.');
+    camposPerfil.forEach(c => dados[c] = valor('perfil' + c));
+    if (!validarDados(dados, 'avisoperfil')) return;
 
     localStorage.setItem('lura_dados', JSON.stringify(dados));
-    localStorage.setItem('lura_usuario', dados.nome.split(' ')[0]);
-    atualizarBotoesConta();
+    entrar(dados.nome.split(' ')[0]);
     document.getElementById('botaosair').style.display = '';
     avisar('avisoperfil', 'Dados salvos com sucesso!', '#16A34A');
 }

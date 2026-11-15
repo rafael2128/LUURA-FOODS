@@ -592,8 +592,6 @@ li{
     }
 }
 
-/* avisos dos formularios */
-
 #avisologin, #avisocadastro, #avisoperfil{
     font-size: 13px;
     font-weight: 600;
@@ -605,16 +603,12 @@ li{
 }
 
 
-/* pedidos feitos */
-
 #repetir span{
     display: block;
     font-size: 13px;
     margin-bottom: 8px;
 }
 
-
-/* perfil */
 
 #info a, #botaosair{
     color: #B81D13;

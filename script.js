@@ -3,17 +3,17 @@ if (localStorage.getItem('lura_theme') === 'dark') {
 }
 
 const produtosData = [
-   { id: 1, nome: "HAMBURGUER", sub: "Lura Bacon Supreme", categoria: "hamburgueres", preco: 30, imagem: "img/baconsupreme.jpg" },
-    { id: 2, nome: "HAMBURGUER", sub: "Smash Double Cheese", categoria: "hamburgueres", preco: 30, imagem: "img/smashdouble.jpg" },
-    { id: 3, nome: "HAMBURGUER", sub: "Cheddar Bacon Craft", categoria: "hamburgueres", preco: 35, imagem: "img/cheddarbacon.jpg" },
-    { id: 4, nome: "HAMBURGUER", sub: "Combo Lura Duplo + Batata", categoria: "combos", preco: 42, imagem: "img/combo.jpg" },
-     { id: 5, nome: "PORÇÃO", sub: "Porção de Batata Rústica", categoria: "porcoes", preco: 22, imagem: "img/batata.jpg" },
-    { id: 6, nome: "BEBIDA", sub: "Coca-Cola", categoria: "bebidas", preco: 10, imagem: "img/cocacola.jpg" }
+   { id: 1, nome: "HAMBURGUER", sub: "Lura Bacon Supreme", categoria: "hamburgueres", preco: 30, imagem: "baconsupreme.jpg" },
+    { id: 2, nome: "HAMBURGUER", sub: "Smash Double Cheese", categoria: "hamburgueres", preco: 30, imagem: "smashdouble.jpg" },
+    { id: 3, nome: "HAMBURGUER", sub: "Cheddar Bacon Craft", categoria: "hamburgueres", preco: 35, imagem: "cheddarbacon.jpg" },
+    { id: 4, nome: "HAMBURGUER", sub: "Combo Lura Duplo + Batata", categoria: "combos", preco: 42, imagem: "combo.jpg" },
+     { id: 5, nome: "PORÇÃO", sub: "Porção de Batata Rústica", categoria: "porcoes", preco: 22, imagem: "batata.jpg" },
+    { id: 6, nome: "BEBIDA", sub: "Coca-Cola", categoria: "bebidas", preco: 10, imagem: "cocacola.jpg" }
 ];
 
 let carrinho = JSON.parse(localStorage.getItem('lura_carrinho')) || [
-    { nome: "LURA BACON BURGER", preco: 30, quantidade: 1, imagem: "img/baconsupreme.jpg" },
-    { nome: "SMASH DOUBLE CHEESE", preco: 30, quantidade: 1, imagem: "img/smashdouble.jpg" }
+    { nome: "LURA BACON BURGER", preco: 30, quantidade: 1, imagem: "baconsupreme.jpg" },
+    { nome: "SMASH DOUBLE CHEESE", preco: 30, quantidade: 1, imagem: "smashdouble.jpg" }
 ];
 carrinho = carrinho.filter(item => item.preco > 0 && item.quantidade > 0);
 

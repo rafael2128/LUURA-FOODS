@@ -92,7 +92,7 @@
 
         <div id="contatograde">
             <div id="contatoform">
-                <h3>Meus Dados</h3>
+                <h3 id="perfiltitulo">Meus Dados</h3>
                 <form id="perfilform" novalidate onsubmit="salvarPerfil(event)">
                     <div id="campogrupo">
                         <label id="campotitulo" for="perfilnome">Nome Completo</label>
@@ -122,8 +122,18 @@
                         <label id="campotitulo" for="perfilnumero">Número</label>
                         <input type="text" id="perfilnumero" maxlength="6" inputmode="numeric" oninput="somenteNumeros(this)" placeholder="Ex: 1000">
                     </div>
+                    <div id="perfilsenhas">
+                        <div id="campogrupo">
+                            <label id="campotitulo" for="perfilsenha">Senha</label>
+                            <input type="password" id="perfilsenha" maxlength="20" placeholder="Crie sua senha">
+                        </div>
+                        <div id="campogrupo">
+                            <label id="campotitulo" for="perfilconfirmasenha">Confirme a Senha</label>
+                            <input type="password" id="perfilconfirmasenha" maxlength="20" placeholder="Confirme sua senha">
+                        </div>
+                    </div>
                     <p id="avisoperfil"></p>
-                    <button id="botaodourado" type="submit">Salvar Dados</button>
+                    <button id="botaodourado" type="submit"><span id="perfilbotao">Salvar Dados</span></button>
                 </form>
             </div>
 
@@ -239,7 +249,7 @@
                     <form novalidate onsubmit="executarCadastro(event)">
 
                         <input type="text" id="cadnome" maxlength="60" placeholder="NOME COMPLETO">
-                        <input type="email" id="cademail" maxlength="80" placeholder="SEU E-MAIL"> <input type="text" id="cadcpf" maxlength="14" inputmode="numeric" oninput="mascaraCPF(this)" placeholder="CPF (000.000.000-00)"> <input type="tel" id="cadtelefone" maxlength="15" inputmode="numeric" oninput="mascaraTelefone(this)" placeholder="TELEFONE ((31) 99999-9999)">
+                        <input type="email" id="cademail" maxlength="80" placeholder="SEU E-MAIL"> <input type="text" id="cadcpf" maxlength="14" inputmode="numeric" oninput="mascaraCPF(this)" placeholder="CPF (000.000.000-00)"> <input type="tel" id="cadtelefone" maxlength="15" inputmode="numeric" oninput="mascaraTelefone(this)" placeholder="TELEFONE ((31) 99999-9999)"> <input type="text" id="cadcep" maxlength="9" inputmode="numeric" oninput="mascaraCEP(this)" placeholder="CEP (00000-000)"> <input type="text" id="cadendereco" maxlength="80" placeholder="ENDEREÇO (RUA, BAIRRO)"> <input type="text" id="cadnumero" maxlength="6" inputmode="numeric" oninput="somenteNumeros(this)" placeholder="NÚMERO">
      
 
                         <input type="password" id="cadsenha" maxlength="20" placeholder="CRIE SUA SENHA"> <input type="password" id="cadconfirmasenha" maxlength="20" placeholder="CONFIRME SUA SENHA"> <p id="avisocadastro"></p>

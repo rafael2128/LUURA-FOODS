@@ -165,27 +165,34 @@ function finalizarCompra() {
 }
 
 function renderizarPedidos() {
-    const grade = document.getElementById('repetirgrade');
+    const grade = document.getElementById('pedidosgrade');
     if (!grade) return;
 
     grade.innerHTML = pedidos.length ? '' : '<p id="carrinhovazio">Você ainda não fez nenhum pedido.</p>';
-    pedidos.forEach((p, i) => {
+    pedidos.forEach(p => {
         grade.innerHTML += `
             <div id="repetir">
                 <div>
                     <h3>PEDIDO #${p.numero}</h3>
                     <span id="textocinza">${p.data} - ${p.itens.map(item => item.quantidade + 'x ' + item.nome).join(', ')}</span>
                     <p>${formatarPreco(p.total)}</p>
-                    <button id="botaodourado" onclick="pedirDeNovo(${i})">Pedir de novo</button>
                 </div>
                 <img src="${p.itens[0].imagem}" alt="${p.itens[0].nome}">
             </div>`;
     });
-}
 
-function pedirDeNovo(i) {
-    pedidos[i].itens.forEach(item => {
-        for (let q = 0; q < item.quantidade; q++) adicionarAoCarrinho(item.nome, item.preco, item.imagem);
+    const repetir = document.getElementById('repetirgrade');
+    repetir.innerHTML = '';
+    new Map(pedidos.flatMap(p => p.itens).map(item => [item.nome, item])).forEach(item => {
+        repetir.innerHTML += `
+            <div id="repetir">
+                <div>
+                    <h3>${item.nome}</h3>
+                    <p>${formatarPreco(item.preco)}</p>
+                    <button id="botaodourado" onclick="adicionarAoCarrinho('${item.nome}', ${item.preco}, '${item.imagem}')">Pedir de novo</button>
+                </div>
+                <img src="${item.imagem}" alt="${item.nome}">
+            </div>`;
     });
 }
 
@@ -297,7 +304,6 @@ function carregarPerfil() {
     const dados = JSON.parse(localStorage.getItem('lura_dados')) || {};
     camposPerfil.forEach(c => document.getElementById('perfil' + c).value = dados[c] || '');
     document.getElementById('perfilpedidos').innerText = pedidos.length;
-    document.getElementById('perfilgasto').innerText = formatarPreco(pedidos.reduce((soma, p) => soma + p.total, 0));
 
     if (!localStorage.getItem('lura_usuario')) {
         avisar('avisoperfil', 'Você não está logado. Preencha seus dados e salve para criar sua conta.');

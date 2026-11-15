@@ -591,3 +591,44 @@ li{
         font-size:14px;
     }
 }
+
+/* avisos dos formularios */
+
+#avisologin, #avisocadastro, #avisoperfil{
+    font-size: 13px;
+    font-weight: 600;
+    margin-bottom: 12px;
+}
+
+#avisologin:empty, #avisocadastro:empty, #avisoperfil:empty{
+    display: none;
+}
+
+
+/* pedidos feitos */
+
+#repetir span{
+    display: block;
+    font-size: 13px;
+    margin-bottom: 8px;
+}
+
+
+/* perfil */
+
+#info a, #botaosair{
+    color: #B81D13;
+    font-weight: 700;
+    text-decoration: underline;
+    font-size: 14px;
+}
+
+#escuro #info a, #escuro #botaosair{
+    color: #E5A93B;
+}
+
+@media (max-width: 480px){
+    #textocadastro{
+        display: none;
+    }
+}

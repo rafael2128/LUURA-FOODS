@@ -405,7 +405,8 @@ footer a:hover {
     max-width: 448px;
     background-color: white;
     border-radius: 16px;
-   overflow:hidden;
+   max-height: 100%;
+    overflow-y: auto;
 }
 
 

@@ -1,0 +1,238 @@
+section{
+   margin-bottom: 48px;
+}
+
+hr {
+   border: none;
+   border-top: 1px solid #D1D5DB;
+
+    margin:32px 0 48px;
+
+}
+
+#itenscarrinho{
+     display: flex;
+   flex-direction:column;
+    gap: 16px;
+  margin-bottom: 24px;
+
+}
+
+
+#carrinhovazio{
+     text-align: center;
+     color: #6B7280;
+    padding:24px 0;
+}
+
+#itemcarrinho, #iteminfo, #itemqtd, #quantidade, #totalcaixa, #pedidocaixa, #repetir {
+    display:flex;
+        align-items: center;
+    justify-content:space-between;
+}
+
+#itemcarrinho {
+   padding: 16px;
+ border:1px solid #E5E7EB;
+    border-radius: 12px;
+}
+
+
+
+#iteminfo{
+    gap: 16px;
+}
+
+#iteminfo img{
+ width: 80PX;
+    height:64px;
+        object-fit: cover;
+
+        border-radius:8px;
+}
+
+#iteminfo h3 {
+     font-size:18px;
+}
+
+
+
+#iteminfo p {
+ font-size: 14px;
+    color: #6B7280;
+}
+
+
+#itemqtd{
+     gap:12px;
+
+    font-size: 14px;
+
+    font-weight:700;
+}
+
+#quantidade {
+    border: 1px solid #E5E7EB;
+    border-radius: 8px;
+    overflow:hidden;
+}
+
+
+#quantidade button {
+  width: 32px;
+        height:32px;
+   font-weight: 700;
+   background-color: #F3F4F6;
+
+}
+
+#quantidade button:hover {
+    background-color: #E5E7EB;
+}
+
+#quantidade span{
+        font-family:"Inter", sans-serif;
+    width: 32px;
+   text-align: center;
+}
+
+#totalcaixa{
+  gap: 16px;
+     font-size: 18px;
+
+}
+
+#valortotal{
+    font-size:24px;
+    margin-left: 8px;
+    
+;
+}
+
+
+#totalcaixa #botaodourado{
+        padding: 14px 32px;
+   font-size:14px;
+}
+
+#pedidocaixa{
+     gap:32px;
+}
+
+#pedidocaixa h3{
+ font-size:20px;
+    margin-bottom:8px;
+
+}
+
+#pedidocaixa p{
+ margin-bottom: 16px;
+
+}
+
+#pedidofoto {
+    width:112px;
+    height: 80PX;
+    object-fit: cover;
+
+    border-radius: 12px;
+}
+
+#pedidodireita{
+     display: flex;
+    flex-direction: column;
+    align-items: flex-end;
+    gap:16px;
+
+}
+
+
+#acompanhe{
+    cursor:default;
+     text-align:center;
+  padding: 12px 24px;
+}
+
+#mapa{
+    width: 384px;
+    height:160px;
+    border-radius:12px;
+    overflow: hidden;
+     border:1px solid #E5E7EB;
+}
+
+
+#mapa img{
+     width:100%;
+  height: 100%;
+     object-fit: cover;
+}
+
+#titulorepetir {
+    text-align: center;
+}
+
+#repetirgrade{
+     display: grid;
+    grid-template-columns:1fr 1fr;
+   gap: 24px;
+}
+
+#repetir{
+  padding: 20px;
+    border: 1.5px solid #94A3B8;
+}
+
+#repetir h3{
+    font-size: 18px;
+   margin-bottom: 12px;
+}
+
+#repetir p{
+   font-weight:700;
+ color:#B81D13;
+  margin-bottom: 12px;
+
+}
+
+#repetir img{
+    width: 96PX;
+
+    height: 80px;
+    object-fit: cover;
+     border-radius:12px;
+}
+
+#escuro hr, #escuro #itemcarrinho, #escuro #quantidade, #escuro #repetir{
+ border-color: #3F3F46;
+}
+
+#escuro #quantidade button {
+ background-color: #3F3F46;
+}
+
+@media (max-width: 1024px) {
+    #pedidocaixa {
+     flex-direction: column;
+    align-items: flex-start;
+    }
+
+    #pedidodireita, #acompanhe, #mapa {
+ width:100%;
+    }
+}
+
+@media (max-width: 768px){
+    #repetirgrade{
+    grid-template-columns: 1fr;
+    }
+
+
+    #totalcaixa{
+    flex-direction: column;
+    }
+
+    #totalcaixa #botaodourado {
+  width: 100%;
+    }
+}

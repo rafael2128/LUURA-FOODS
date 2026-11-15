@@ -1,0 +1,114 @@
+#contatotopo{
+  text-align:center;
+    max-width:670px;
+        margin:0 auto 48px;
+    font-size:14px;
+}
+
+
+#contatograde {
+ display: grid;
+     grid-template-columns:1fr 1fr;
+ gap: 32px;
+
+}
+
+
+#contatoform{
+        padding: 32px;
+}
+
+#contatoform h3{
+  font-size: 20px;
+
+   margin-bottom: 24px;
+}
+
+#campogrupo {
+   margin-bottom: 16px;
+}
+
+#campotitulo{
+    display: block;
+        font-size:12px;
+        font-weight: 700;
+
+    text-transform: uppercase;
+    margin-bottom:8px;
+}
+
+#contatoform input, #contatoform textarea{
+    width: 100%;
+    background-color: #F9FAFB;
+    border:1px solid #E5E7EB;
+        border-radius:12px;
+    padding: 0 16px;
+    font-size:14px;
+    outline: none;
+}
+
+
+#contatoform input{
+ height: 48px;
+}
+
+#contatoform textarea {
+    padding: 16px;
+   resize: vertical;
+}
+
+#contatoform input:focus, #contatoform textarea:focus {
+  border-color:#B81D13;
+}
+
+#contatoform #botaodourado {
+    width: 100%;
+
+        padding:14px;
+}
+
+
+#contatoinfos {
+    display: flex;
+     flex-direction: column;
+    justify-content:space-between;
+        gap: 24px;
+}
+
+#info {
+    display: flex;
+     gap: 16px;
+    font-size:14px;
+
+}
+
+#info h4 {
+        font-size: 16px;
+    margin-bottom:4px;
+}
+
+#icone{
+    color: #B81D13;
+}
+
+#icone svg{
+    width: 28px;
+    height: 28PX;
+
+}
+
+
+#escuro #contatoform input, #escuro #contatoform textarea {
+    background-color:#3F3F46;
+     border-color: #52525B;
+    color: #F3F4F6;
+}
+
+
+@media (max-width: 1024px) {
+    #contatograde{
+    grid-template-columns: 1fr;
+
+    }
+
+}

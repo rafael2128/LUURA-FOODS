@@ -6,7 +6,7 @@ const produtosData = [
   { id: 1, nome: "HAMBURGUER", sub: "Lura Bacon Supreme", categoria: "hamburgueres", preco: 30, imagem: "baconsupreme.jpg" },
     { id: 2, nome: "HAMBURGUER", sub: "Smash Double Cheese", categoria: "hamburgueres", preco: 30, imagem: "smashdouble.jpg" },
     { id: 3, nome: "HAMBURGUER", sub: "Cheddar Bacon Craft", categoria: "hamburgueres", preco: 35, imagem: "cheddarbacon.jpg" },
-    { id: 4, nome: "HAMBURGUER", sub: "Combo Lura Duplo + Batata", categoria: "combos", preco: 42, imagem: "combo.jpg" },
+    { id: 4, nome: "COMBO", sub: "Combo Lura Duplo + Batata", categoria: "combos", preco: 42, imagem: "combo.jpg" },
        { id: 5, nome: "PORÇÃO", sub: "Porção de Batata Rústica", categoria: "porcoes", preco: 22, imagem: "batata.jpg" },
     { id: 6, nome: "BEBIDA", sub: "Coca-Cola", categoria: "bebidas", preco: 10, imagem: "cocacola.jpg" }
 ];

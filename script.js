@@ -356,7 +356,7 @@ fetch("http://localhost:5000/", {
     body: JSON.stringify({
         customer_name:localStorage.getItem("lura_usuario") || "Cliente",
         order_date: new Date(Date.now() - new Date().getTimezoneOffset() * 60000).toISOString().slice(0, 19),
-        total_amount:total_amount: carrinho.reduce((soma, item) => soma + item.preco * item.quantidade, 0),,
+        total_amount: carrinho.reduce((soma, item) => soma + item.preco * item.quantidade, 0),
         status: "Pendente"
     })
 })

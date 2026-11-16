@@ -37,7 +37,7 @@ input, textarea, #botaoconta, #contadorcarrinho {
  font-family: "Inter", sans-serif;
 }
 
-svg {
+#botaoredondo img, #botaoconta img, #redes img, #lupa{
       display: block;
      width:20px;
    height: 20px;
@@ -136,7 +136,7 @@ header{
     font-weight: 700;
 }
 
-#botaoconta svg, #lupa{
+#botaoconta img, #lupa{
    width: 16PX;
  height: 16PX;
 
@@ -629,4 +629,12 @@ li{
         width: 38px;
      height: 38px;
     }
+}
+
+#escuro #botaoredondo img, #escuro #botaoconta img{
+    filter: brightness(0) invert(61%) sepia(29%) saturate(863%) brightness(106%);
+}
+
+#escuro #redes img{
+  filter: invert(1);
 }

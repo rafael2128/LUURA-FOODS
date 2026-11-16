@@ -1,33 +1,32 @@
 * {
-    box-sizing:border-box;
+      box-sizing:border-box;
 
     margin: 0px;
     padding:0;
- font-family:"Cinzel", serif;
+   font-family:"Cinzel", serif;
 
 }
 
-
 body {
-     background-color: #F4F4F4;
-    color:#1A1A1A;
+   background-color: #F4F4F4;
+     color:#1A1A1A;
     min-height: 100vh;
-    display: flex;
+   display: flex;
    flex-direction: column;
     padding-bottom: 144px;
 }
 
 a {
    text-decoration: none;
-    color: inherit;
+     color: inherit;
 }
 
 ul{
-    list-style: none;
+  list-style: none;
 }
 
 button{
-   border: none;
+      border: none;
  background: none;
    cursor:pointer;
 
@@ -39,16 +38,16 @@ input, textarea, #botaoconta, #contadorcarrinho {
 }
 
 svg {
-     display: block;
+      display: block;
      width:20px;
- height: 20px;
+   height: 20px;
 }
 
 
 #botaodourado {
-   background-color:#E5A93B;
+  background-color:#E5A93B;
     color: #111827;
-   font-weight: 700;
+    font-weight: 700;
     font-size:12px;
   text-transform: uppercase;
     letter-spacing:1px;
@@ -68,26 +67,28 @@ svg {
 
 #produto, #totalcaixa, #repetir, #contatoform, #info{
      background-color: white;
-    border: 1px solid #E5E7EB;
- border-radius:16px;
-    padding: 24px;
+ border: 1px solid #E5E7EB;
+
+    border-radius:16px;
+  padding: 24px;
 }
 
 #textocinza{
-    color: #6B7280;
+
+     color: #6B7280;
 
 }
 
 header{
-    height:76PX;
+     height:76PX;
     background-color: #B81D13;
-   padding: 0 40px;
+ padding: 0 40px;
     display: flex;
     align-items: center;
         justify-content: space-between;
     position: sticky;
 
-    top:0;
+       top:0;
    z-index: 40;
     
 ;
@@ -96,14 +97,16 @@ header{
 }
 
 #cabecalholado{
-     display: flex;
- align-items: center;
+    display: flex;
+   align-items: center;
     gap: 16px;
 }
 
 #logo{
-     font-size:30px;
-    color: white;
+        font-size:30px;
+
+       color: white;
+
         letter-spacing: 1px;
 }
 
@@ -111,217 +114,211 @@ header{
 
 #botaoredondo, #botaoconta{
    width: 44px;
-  height:44px;
+ height:44px;
     border-radius:50px;
-    background-color:white;
-    color: #B81D13;
+ background-color:white;
+ color: #B81D13;
     display: flex;
     align-items: center;
     justify-content: center;
    gap: 8px;
-    position: relative;
+   position: relative;
     box-shadow: 0 1px 3px rgba(0, 0, 0, 0.15);
 }
 
 #botaoredondo:hover, #botaoconta:hover, #menulink:hover {
-    background-color: #F3F4F6;
+      background-color: #F3F4F6;
 }
-
 #botaoconta {
     width: auto;
-    padding:0 16px;
-    font-size: 14px;
+       padding:0 16px;
+       font-size: 14px;
     font-weight: 700;
 }
 
-
 #botaoconta svg, #lupa{
-    width: 16PX;
-    height: 16PX;
+   width: 16PX;
+ height: 16PX;
 
 }
 
 #contadorcarrinho{
-        position: absolute;
-    top: -4px;
+         position: absolute;
+       top: -4px;
     right:-4px;
-     width:20px;
-    height: 20px;
+       width:20px;
+      height: 20px;
+
         border-radius: 50px;
-    background-color: #E5A93B;
+   background-color: #E5A93B;
+
 
     color: #111827;
         font-size:11px;
+
     font-weight:700;
+
     display: flex;
   align-items: center;
-    justify-content:center;
-
+      justify-content:center;
 }
-
 #pesquisa {
-    flex:1;
-     max-width: 480px;
+     flex:1;
+        max-width: 480px;
 
-     margin: 0 16px;
+       margin: 0 16px;
  position: relative;
 }
 
 
 #campopesquisa {
     width: 100%;
-     height:44px;
-    border-radius:50px;
+      height:44px;
+     border-radius:50px;
   border: none;
     padding: 0 48px 0 20px;
 
     font-size:14px;
-    outline: none;
+  outline: none;
 }
-
 #lupa {
     color: #9CA3AF;
-    position: absolute;
-  right: 16px;
+   position: absolute;
+    right: 16px;
     top: 14px;
 }
 
 #fundomenu, #janelalogin{
-        display:none;
-    position:fixed;
+          display:none;
+       position:fixed;
      top: 0;
-    left:0px;
+   left:0px;
 
-    width:100%;
+      width:100%;
     height: 100%;
-    background-color:rgba(0, 0, 0, 0.5);
+ background-color:rgba(0, 0, 0, 0.5);
 
-    z-index: 50;
+     z-index: 50;
 }
-
 #menu{
     position: fixed;
-    top:0;
+  top:0;
      left: -320px;
     width: 320px;
  height: 100%;
-    background-color: white;
+  background-color: white;
  z-index: 50;
-    display: flex;
+     display: flex;
     flex-direction:column;
    transition:left 0.3s;
 }
 
 #menutopo, #janelatopo {
     background-color: #B81D13;
-
-    color: white;
-    padding:24px;
+ color: white;
+     padding:24px;
      display: flex;
   align-items: center;
      justify-content: space-between;
     font-size: 20px;
-    letter-spacing: 1px;
+   letter-spacing: 1px;
 }
 
 #menutopo h2{
     font-size:20px;
 }
-
 #botaofechar{
-   color:white;
-
+    color:white;
     font-size: 30px;
-    
 ;
 }
 
 
 #menulinks {
     display: flex;
-    flex-direction: column;
-    gap: 4px;
-    padding: 12px;
+ flex-direction: column;
+      gap: 4px;
+  padding: 12px;
 }
-
 #menulink {
  display: flex;
-        justify-content: space-between;
-    padding:12px 16px;
-     border-radius: 8px;
+      justify-content: space-between;
+     padding:12px 16px;
+       border-radius: 8px;
     
 ;
-    font-size:14px;
+       font-size:14px;
     font-weight: 600;
     border: 1px solid #E5E7EB;
 }
 
 #menurodape {
      margin-top: auto;
-    padding: 24px;
+      padding: 24px;
     
 ;
      border-top: 1px solid #E5E7EB;
-  font-size:12px;
- color:#6B7280;
+    font-size:12px;
+    color:#6B7280;
     line-height: 1.6;
 }
 
 
 
 #banner{
-    height: 420px;
-    position: relative;
+   height: 420px;
+   position: relative;
 
-     margin-bottom: 40px;
+      margin-bottom: 40px;
 }
 
 
 #bannerfoto{
+
      width:100%;
         height: 100%;
      object-fit: cover;
 }
 
 #bannersombra {
-    position: absolute;
-    top: 0;
+      position: absolute;
+
+       top: 0;
     left: 0px;
   width: 100%;
-    height:100%;
-   background: linear-gradient(to right, rgba(0, 0, 0, 0.9), transparent);
+   height:100%;
+ background: linear-gradient(to right, rgba(0, 0, 0, 0.9), transparent);
 }
-
 #bannertexto {
     position: absolute;
-     bottom: 40px;
+       bottom: 40px;
  left: 80px;
     max-width:670px;
     
 ;
-  color: #E5E7EB;
+ color: #E5E7EB;
 }
 
-
 #bannertexto h2{
-        font-size: 48px;
+         font-size: 48px;
     font-weight:800;
     color: #E5A93B;
+
     margin-bottom: 8px;
 }
 
 main{
-  flex: 1;
+ flex: 1;
 
-   width: 100%;
+
+  width: 100%;
     max-width: 1280px;
-    margin: 0 auto;
-        padding:0 32px 64px;
+ margin: 0 auto;
+           padding:0 32px 64px;
     
 ;
 
 }
-
 #titulosecao, #titulorepetir{
     font-size: 30px;
     margin-bottom: 24px;
@@ -331,22 +328,23 @@ main{
 #barrainferior{
     position: fixed;
     bottom: 0;
+
      width: 100%;
     background-color: #B81D13;
     padding: 12px;
   display: flex;
     justify-content: center;
-   gap: 80px;
+  gap: 80px;
  z-index:40;
 }
 
 #botaobarra, #paginaatual {
     font-size: 12px;
-    font-weight: 700;
-    color: black;
+     font-weight: 700;
+      color: black;
     background-color:white;
     padding: 8px 16px;
- border-radius: 8px;
+  border-radius: 8px;
 }
 
 #paginaatual {
@@ -361,84 +359,79 @@ footer{
 }
 
 #rodapecolunas {
-  max-width:1280px;
-     margin: 0 auto;
-    display: grid;
-    grid-template-columns: 1fr 1fr 1fr;
-   gap: 40px;
+ max-width:1280px;
+        margin: 0 auto;
+     display: grid;
+      grid-template-columns: 1fr 1fr 1fr;
+     gap: 40px;
 
 }
-
 
 footer h4{
     margin-bottom: 16px;
-
 }
 
 footer li{
-    font-size: 14px;
+ font-size: 14px;
     color: #4B5563;
-    margin-bottom: 10px;
+  margin-bottom: 10px;
 }
 
 
 footer a:hover {
-    color: #B81D13;
+       color: #B81D13;
 }
 
 #redes{
-     display: flex;
+        display: flex;
   gap: 16px;
 
 }
 
 #janelalogin{
    background-color: rgba(0, 0, 0, 0.6);
+
     align-items: center;
     justify-content:center;
-    padding:16px;
+ padding:16px;
 
 }
 
 #janelacaixa{
-    width:100%;
-    max-width: 448px;
-    background-color: white;
+ width:100%;
+       max-width: 448px;
+       background-color: white;
     border-radius: 16px;
    max-height: 100%;
-    overflow-y: auto;
+  overflow-y: auto;
 }
 
 
 #janelatopo{
-  padding:16px 24px;
+     padding:16px 24px;
 }
 
 #janelacorpo{
-   padding:32px;
+ padding:32px;
 
 }
-
 #janelacorpo h2{
  font-size: 30px;
-    text-align: center;
+      text-align: center;
         margin-bottom:32px;
 }
-
 #formcadastro{
  display: none;
 }
 
 #janelacorpo input{
         width: 100%;
+
     height: 48PX;
    margin-bottom: 16px;
         padding: 0 16px;
-
-        background-color: #F3F4F6;
-
+          background-color: #F3F4F6;
      border: 1px solid #E5E7EB;
-    
 ;
     border-radius: 8px;
     font-size: 12px;
@@ -446,24 +439,23 @@ footer a:hover {
 }
 
 #janelacorpo input:focus{
-    border-color: #B81D13;
+   border-color: #B81D13;
 
 }
 
 
 #janelacorpo #botaodourado{
-    width: 100%;
-  height:48px;
+   width: 100%;
+ height:48px;
 
-    font-size: 14px;
+      font-size: 14px;
 }
 
-
 #janelarodape{
-    text-align:center;
-     margin-top:16px;
+      text-align:center;
+    margin-top:16px;
   padding-top: 16px;
-    border-top:1px solid #E5E7EB;
+   border-top:1px solid #E5E7EB;
     font-size:14px;
 
 }
@@ -478,31 +470,33 @@ footer a:hover {
   font-size:12px;
    font-weight:700;
     text-decoration: underline;
-
 }
 
 #escuro body {
     background-color: #121212;
 
     color:#E2E8F0;
-
 }
 
 #escuro #produto, #escuro #totalcaixa,
+
 #escuro #repetir, #escuro #contatoform, #escuro #info, #escuro #menu,
 #escuro #janelacaixa, #escuro #botaoredondo, #escuro #botaoconta,
 #escuro #menulink, #escuro #campopesquisa, #escuro #janelacorpo input{
-    background-color: #27272A;
+ background-color: #27272A;
+
   border-color:#3F3F46;
 
-  color: #E2E8F0;
+ color: #E2E8F0;
 }
 
+
 #escuro #botaoredondo, #escuro #botaoconta{
-    color:#E5A93B;
+  color:#E5A93B;
 }
 
 #escuro #textocinza, #escuro footer li, #escuro #menurodape{
+
     color: #9CA3AF;
 }
 
@@ -510,29 +504,30 @@ footer a:hover {
     border-color: #3F3F46;
 }
 
+
 @media (max-width: 768px){
     header{
-   padding:0 16px;
-    }
+      padding:0 16px;
+       }
 
-    #logo {
+       #logo {
     font-size:24px;
-    }
 
-    #pesquisa {
-        display:none;
+      }
+     #pesquisa {
+           display:none;
     }
 
     #banner {
-    height:320px;
-    }
+     height:320px;
+     }
 
     #bannertexto{
-    left: 24px;
+      left: 24px;
  right:24px;
     }
 
-    #bannertexto h2 {
+      #bannertexto h2 {
  font-size: 30px;
     }
 
@@ -540,13 +535,13 @@ footer a:hover {
     padding: 0 16px 64px;
     }
 
-    #barrainferior{
+     #barrainferior{
+
     gap:40px;
     }
-
-    #rodapecolunas{
+     #rodapecolunas{
      grid-template-columns: 1fr;
-    }
+       }
 }
 
 
@@ -554,66 +549,62 @@ li{
     
    
 }
-
 @media (max-width: 480px){
     header{
-        padding: 0 10px;
-    }
+         padding: 0 10px;
+     }
 
     #cabecalholado{
      gap: 8px;
     }
 
-    #logo{
+     #logo{
         font-size:18px;
     }
 
-    #nomeusuario, #itemqtd > span{
+       #nomeusuario, #itemqtd > span{
         display: none;
-    }
+       }
 
-    #botaoconta{
+       #botaoconta{
         width: 44px;
-        padding: 0px;
+         padding: 0px;
     }
 
-    #barrainferior{
-        gap: 8px;
-       padding: 10px 8px;
-    }
+  #barrainferior{
+           gap: 8px;
+    padding: 10px 8px;
+      }
 
     #botaobarra, #paginaatual{
-        font-size: 10px;
-        padding: 8px 10px;
-        text-align: center;
-    }
+           font-size: 10px;
+         padding: 8px 10px;
+     text-align: center;
+     }
 
-    #iteminfo h3{
+   #iteminfo h3{
         font-size:14px;
     }
 }
 
 #avisologin, #avisocadastro, #avisoperfil{
     font-size: 13px;
-    font-weight: 600;
+  font-weight: 600;
     margin-bottom: 12px;
 }
-
 #avisologin:empty, #avisocadastro:empty, #avisoperfil:empty{
     display: none;
 }
-
-
 #repetir span{
-    display: block;
-    font-size: 13px;
+     display: block;
+      font-size: 13px;
     margin-bottom: 8px;
 }
 
 
 #info a, #botaosair{
     color: #B81D13;
-    font-weight: 700;
+     font-weight: 700;
     text-decoration: underline;
     font-size: 14px;
 }
@@ -623,18 +614,19 @@ li{
 }
 
 #logo{
-    white-space: nowrap;
+       white-space: nowrap;
 }
 
+
 @media (max-width: 1100px){
-    #textocadastro{
-        display: none;
-    }
+       #textocadastro{
+      display: none;
+   }
 }
 
 @media (max-width: 480px){
-    #botaoredondo, #botaoconta{
+     #botaoredondo, #botaoconta{
         width: 38px;
-        height: 38px;
+     height: 38px;
     }
 }

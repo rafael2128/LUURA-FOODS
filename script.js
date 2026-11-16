@@ -48,9 +48,7 @@ function toggleDarkMode() {
 }
 function atualizarIconeTema(){
      const escuro = document.documentElement.id === 'escuro';
-    document.getElementById('iconetema').innerHTML = escuro
-        ? '<circle cx="12" cy="12" r="4"></circle><path d="M12 2v2M12 20v2M2 12h2M20 12h2M5 5l1.5 1.5M17.5 17.5L19 19M5 19l1.5-1.5M17.5 6.5L19 5"></path>'
-        : '<path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path>';
+    document.getElementById('iconetema').src = escuro ? 'sol.png' : 'lua.png';
     document.getElementById('iconetemamenu').innerText = escuro ? '☀️' : '🌙';
 }
 

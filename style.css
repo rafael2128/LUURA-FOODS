@@ -1,640 +1,697 @@
-* {
-      box-sizing:border-box;
+*{
+      box-sizing:  border-box;
 
-    margin: 0px;
-    padding:0;
-   font-family:"Cinzel", serif;
+     margin: 0px;
+      padding: 0;
+
+font-family: "Cinzel", serif;
 
 }
 
-body {
+    body  {
    background-color: #F4F4F4;
-     color:#1A1A1A;
+
+       color:  #1A1A1A;
     min-height: 100vh;
-   display: flex;
-   flex-direction: column;
-    padding-bottom: 144px;
+   display:flex;
+ flex-direction: column;
+   padding-bottom:  144px;
+  }
+
+a{
+   text-decoration:none;
+        color:inherit;
 }
-
-a {
-   text-decoration: none;
-     color: inherit;
+    ul{
+   list-style:none;
 }
+ button  {
+        border :none;
+ background:  none;
+       cursor: pointer;
 
-ul{
-  list-style: none;
-}
-
-button{
-      border: none;
- background: none;
-   cursor:pointer;
-
- color: inherit;
-}
-
-input, textarea, #botaoconta, #contadorcarrinho {
- font-family: "Inter", sans-serif;
-}
-
-#botaoredondo img, #botaoconta img, #redes img, #lupa{
-      display: block;
-     width:20px;
-   height: 20px;
+    color: inherit;
 }
 
 
-#botaodourado {
-  background-color:#E5A93B;
-    color: #111827;
-    font-weight: 700;
-    font-size:12px;
-  text-transform: uppercase;
-    letter-spacing:1px;
+    input, textarea, #botaoconta, #contadorcarrinho {
+
+font-family: "Inter", sans-serif;
+  }
+
+
+ #botaoredondo img, #botaoconta img, #redes img, #lupa {
+       display:block;
+    width: 20px;
+   height:20px;
+
+    }
+
+#botaodourado  {
+    background-color:#E5A93B;
+        color:  #111827;
+     font-weight : 700;
+    font-size: 12px;
+     text-transform:  uppercase;
+      letter-spacing:1px;
     border-radius: 12px;
-        padding: 12px 20px;
- box-shadow: 0 1px 3px rgba(0, 0, 0, 0.15);
-    transition: 0.15s;
+            padding:  12px 20px;
+box-shadow:0 1px 3px rgba(0, 0, 0, 0.15);
+    transition:0.15s;
 }
 
-#botaodourado:hover{
-    background-color: #d49a32;
-}
+ #botaodourado:hover  {
+    background-color:#d49a32;
+  }
 
-#botaodourado:active{
-  transform: scale(0.95);
-}
 
-#produto, #totalcaixa, #repetir, #contatoform, #info{
-     background-color: white;
+#botaodourado:active  {
+transform:scale(0.95);
+    }
+
+
+#produto, #totalcaixa, #repetir, #contatoform, #info {
+ background-color:white;
  border: 1px solid #E5E7EB;
 
-    border-radius:16px;
-  padding: 24px;
+    border-radius: 16px;
+padding:24px;
 }
 
 #textocinza{
+        color:  #6B7280;
 
-     color: #6B7280;
+ }
+ header  {
 
-}
 
-header{
-     height:76PX;
-    background-color: #B81D13;
- padding: 0 40px;
+ height:  76PX;
+       background-color:  #B81D13;
+    padding:0 40px;
     display: flex;
+
     align-items: center;
-        justify-content: space-between;
-    position: sticky;
 
-       top:0;
-   z-index: 40;
-    
-;
-  box-shadow:0 4px 6px rgba(0, 0, 0, 0.1);
+            justify-content:  space-between;
+   position : sticky;
 
+          top :0;
+
+   z-index:  40;
+
+    ;
+  box-shadow : 0 4px 6px rgba(0, 0, 0, 0.1);
 }
 
-#cabecalholado{
-    display: flex;
-   align-items: center;
+ #cabecalholado  {
+       display:flex;
+      align-items:center;
     gap: 16px;
 }
 
-#logo{
-        font-size:30px;
 
-       color: white;
-
-        letter-spacing: 1px;
-}
+#logo {
+            font-size:30px;
 
 
 
-#botaoredondo, #botaoconta{
+      color:  white;
+
+       letter-spacing:  1px;
+
+
+   }
+
+
+  #botaoredondo, #botaoconta  {
+
    width: 44px;
- height:44px;
-    border-radius:50px;
- background-color:white;
- color: #B81D13;
-    display: flex;
-    align-items: center;
+ height :44px;
+      border-radius:  50px;
+
+background-color:  white;
+
+   color:  #B81D13;
+display:  flex;
+    align-items : center;
     justify-content: center;
-   gap: 8px;
-   position: relative;
-    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.15);
+   gap:8px;
+   position :  relative;
+box-shadow:0 1px 3px rgba(0, 0, 0, 0.15);
 }
 
-#botaoredondo:hover, #botaoconta:hover, #menulink:hover {
-      background-color: #F3F4F6;
+#botaoredondo:hover, #botaoconta:hover, #menulink:hover{
+      background-color:  #F3F4F6;
 }
-#botaoconta {
-    width: auto;
-       padding:0 16px;
-       font-size: 14px;
-    font-weight: 700;
-}
+#botaoconta  {
+width:  auto;
+        padding :0 16px;
 
-#botaoconta img, #lupa{
-   width: 16PX;
+       font-size:  14px;
+      font-weight:  700;
+}
+#botaoconta img, #lupa  {
+   width:  16PX;
+
  height: 16PX;
 
 }
 
-#contadorcarrinho{
-         position: absolute;
-       top: -4px;
-    right:-4px;
-       width:20px;
-      height: 20px;
-
-        border-radius: 50px;
-   background-color: #E5A93B;
+    #contadorcarrinho{
+             position:  absolute;
 
 
-    color: #111827;
-        font-size:11px;
+     top: -4px;
+      right:  -4px;
+           width:  20px;
+       height:  20px;
+           border-radius:  50px;
 
-    font-weight:700;
 
-    display: flex;
+   background-color:#E5A93B;
+
+
+    color:  #111827;
+        font-size :11px;
+
+       font-weight :  700;
+      display:flex;
   align-items: center;
-      justify-content:center;
-}
-#pesquisa {
+         justify-content:center;
+  }
+#pesquisa  {
      flex:1;
-        max-width: 480px;
+        max-width:  480px;
 
-       margin: 0 16px;
- position: relative;
+     margin: 0 16px;
+position:relative;
+
 }
 
 
 #campopesquisa {
-    width: 100%;
-      height:44px;
-     border-radius:50px;
-  border: none;
-    padding: 0 48px 0 20px;
-
-    font-size:14px;
-  outline: none;
+        width:  100%;
+         height:  44px;
+       border-radius:50px;
+     border: none;
+    padding:0 48px 0 20px;
+    font-size:  14px;
+    outline : none;
 }
 #lupa {
-    color: #9CA3AF;
-   position: absolute;
-    right: 16px;
-    top: 14px;
-}
+        color:#9CA3AF;
+    position: absolute;
+    right : 16px;
+        top:14px;
+  }
+
 
 #fundomenu, #janelalogin{
-          display:none;
-       position:fixed;
-     top: 0;
-   left:0px;
-
-      width:100%;
-    height: 100%;
- background-color:rgba(0, 0, 0, 0.5);
-
-     z-index: 50;
-}
-#menu{
+          display :  none;
     position: fixed;
-  top:0;
-     left: -320px;
-    width: 320px;
- height: 100%;
-  background-color: white;
- z-index: 50;
-     display: flex;
-    flex-direction:column;
-   transition:left 0.3s;
+
+     top:  0;
+ left: 0px;
+      width:  100%;
+height: 100%;
+
+     background-color:  rgba(0, 0, 0, 0.5);
+
+  z-index:  50;
+
+ }
+#menu {
+    position:fixed;
+  top: 0;
+
+        left :  -320px;
+      width: 320px;
+    height: 100%;
+  background-color:  white;
+
+ z-index:  50;
+
+
+      display:flex;
+      flex-direction:column;
+      transition :  left 0.3s;
+
 }
 
 #menutopo, #janelatopo {
-    background-color: #B81D13;
- color: white;
-     padding:24px;
-     display: flex;
-  align-items: center;
-     justify-content: space-between;
-    font-size: 20px;
-   letter-spacing: 1px;
+   background-color:#B81D13;
+     color: white;
+    padding :24px;
+      display:flex;
+  align-items :center;
+  justify-content :space-between;
+  font-size :  20px;
+   letter-spacing:  1px;
+    }
+#menutopo h2 {
+      font-size:20px;
 }
-
-#menutopo h2{
-    font-size:20px;
-}
-#botaofechar{
-    color:white;
-    font-size: 30px;
+#botaofechar  {
+ color:  white;
+    font-size:  30px;
 ;
 }
 
-
-#menulinks {
-    display: flex;
- flex-direction: column;
-      gap: 4px;
+#menulinks{
+        display: flex;
+   flex-direction:  column;
+         gap:4px;
   padding: 12px;
-}
-#menulink {
+  }
+   #menulink  {
  display: flex;
-      justify-content: space-between;
-     padding:12px 16px;
+         justify-content:  space-between;
+       padding:  12px 16px;
        border-radius: 8px;
-    
+
 ;
-       font-size:14px;
-    font-weight: 600;
-    border: 1px solid #E5E7EB;
+       font-size: 14px;
+  font-weight :  600;
+    border:1px solid #E5E7EB;
 }
 
-#menurodape {
-     margin-top: auto;
-      padding: 24px;
-    
+#menurodape  {
+     margin-top:auto;
+        padding: 24px;
 ;
-     border-top: 1px solid #E5E7EB;
-    font-size:12px;
-    color:#6B7280;
-    line-height: 1.6;
+     border-top:  1px solid #E5E7EB;
+font-size :12px;
+
+color: #6B7280;
+  line-height:1.6;
+
+
 }
 
 
 
-#banner{
-   height: 420px;
-   position: relative;
+ #banner {
+       height: 420px;
+     position: relative;
 
-      margin-bottom: 40px;
+   margin-bottom: 40px;
 }
 
+  #bannerfoto {
 
-#bannerfoto{
-
-     width:100%;
-        height: 100%;
+        width:100%;
+       height :100%;
      object-fit: cover;
 }
 
 #bannersombra {
-      position: absolute;
+      position :  absolute;
 
-       top: 0;
-    left: 0px;
-  width: 100%;
-   height:100%;
- background: linear-gradient(to right, rgba(0, 0, 0, 0.9), transparent);
+         top :0;
+       left: 0px;
+
+  width:  100%;
+   height:  100%;
+background: linear-gradient(to right, rgba(0, 0, 0, 0.9), transparent);
 }
-#bannertexto {
-    position: absolute;
-       bottom: 40px;
+    #bannertexto {
+    position:absolute;
+          bottom:40px;
+
  left: 80px;
-    max-width:670px;
-    
+      max-width:  670px;
+
 ;
  color: #E5E7EB;
 }
 
 #bannertexto h2{
-         font-size: 48px;
-    font-weight:800;
-    color: #E5A93B;
+         font-size:48px;
+    font-weight: 800;
+     color:#E5A93B;
 
-    margin-bottom: 8px;
+    margin-bottom:8px;
+
 }
 
 main{
- flex: 1;
+ flex:  1;
 
 
-  width: 100%;
-    max-width: 1280px;
+width:  100%;
+max-width:1280px;
  margin: 0 auto;
-           padding:0 32px 64px;
-    
+        padding:  0 32px 64px;
 ;
 
 }
-#titulosecao, #titulorepetir{
-    font-size: 30px;
-    margin-bottom: 24px;
+#titulosecao, #titulorepetir  {
+ font-size: 30px;
+        margin-bottom:24px;
+
+
 
 }
 
-#barrainferior{
-    position: fixed;
-    bottom: 0;
+ #barrainferior {
+      position:fixed;
+    bottom :0;
 
-     width: 100%;
-    background-color: #B81D13;
-    padding: 12px;
-  display: flex;
-    justify-content: center;
-  gap: 80px;
- z-index:40;
+   width: 100%;
+background-color:#B81D13;
+    padding:12px;
+ display :  flex;
+  justify-content:  center;
+gap:80px;
+
+
+ z-index:  40;
 }
 
-#botaobarra, #paginaatual {
-    font-size: 12px;
-     font-weight: 700;
-      color: black;
-    background-color:white;
-    padding: 8px 16px;
+  #botaobarra, #paginaatual  {
+     font-size:12px;
+     font-weight:  700;
+    color:  black;
+    background-color:  white;
+    padding :  8px 16px;
+
   border-radius: 8px;
 }
-
 #paginaatual {
-    box-shadow: 0 0 0 2px #E5A93B;
+    box-shadow :  0 0 0 2px #E5A93B;
 
 }
 
 
-footer{
-    padding: 48px;
-     border-top: 1px solid #D1D5DB;
-}
+
+footer  {
+padding: 48px;
+
+     border-top : 1px solid #D1D5DB;
+   }
+
 
 #rodapecolunas {
  max-width:1280px;
-        margin: 0 auto;
-     display: grid;
-      grid-template-columns: 1fr 1fr 1fr;
-     gap: 40px;
+         margin:0 auto;
+         display:grid;
+        grid-template-columns :1fr 1fr 1fr;
+     gap :  40px;
+
+
+
+   }
+
+footer h4  {
+
+       margin-bottom:  16px;
+
 
 }
 
-footer h4{
-    margin-bottom: 16px;
-}
+footer li  {
+font-size :14px;
 
-footer li{
- font-size: 14px;
-    color: #4B5563;
-  margin-bottom: 10px;
+       color:  #4B5563;
+      margin-bottom: 10px;
 }
-
 
 footer a:hover {
        color: #B81D13;
 }
 
 #redes{
-        display: flex;
-  gap: 16px;
+        display:  flex;
+ gap: 16px;
 
 }
 
-#janelalogin{
-   background-color: rgba(0, 0, 0, 0.6);
+  #janelalogin{
 
-    align-items: center;
-    justify-content:center;
- padding:16px;
 
-}
+    background-color:  rgba(0, 0, 0, 0.6);
+
+align-items:  center;
+    justify-content : center;
+padding: 16px;
+
+   }
 
 #janelacaixa{
- width:100%;
-       max-width: 448px;
-       background-color: white;
-    border-radius: 16px;
-   max-height: 100%;
-  overflow-y: auto;
+width:  100%;
+         max-width: 448px;
+        background-color:  white;
+    border-radius:16px;
+ max-height:  100%;
+  overflow-y:  auto;
 }
 
 
-#janelatopo{
-     padding:16px 24px;
+   #janelatopo{
+     padding:  16px 24px;
 }
 
-#janelacorpo{
- padding:32px;
+  #janelacorpo  {
+ padding: 32px;
 
 }
 #janelacorpo h2{
- font-size: 30px;
-      text-align: center;
+font-size : 30px;
+      text-align:  center;
         margin-bottom:32px;
 }
-#formcadastro{
- display: none;
+    #formcadastro {
+ display:  none;
 }
 
-#janelacorpo input{
-        width: 100%;
 
-    height: 48PX;
-   margin-bottom: 16px;
-        padding: 0 16px;
-          background-color: #F3F4F6;
-     border: 1px solid #E5E7EB;
+
+  #janelacorpo input{
+
+
+        width:  100%;
+
+
+    height:48PX;
+
+
+margin-bottom:16px;
+        padding:0 16px;
+            background-color:#F3F4F6;
+       border: 1px solid #E5E7EB;
 ;
-    border-radius: 8px;
-    font-size: 12px;
-        outline:none;
+   border-radius:8px;
+    font-size:12px;
+
+            outline: none;
+    }
+
+#janelacorpo input:focus {
+       border-color:#B81D13;
+ }
+
+#janelacorpo #botaodourado {
+     width: 100%;
+
+
+  height:  48px;
+
+        font-size:  14px;
 }
 
-#janelacorpo input:focus{
-   border-color: #B81D13;
+#janelarodape {
+   text-align: center;
+   margin-top:16px;
+ padding-top : 16px;
+ border-top:1px solid #E5E7EB;
+     font-size:14px;
+
+  }
+
+
+ #janelarodape p {
+
+  margin-bottom: 8px;
 
 }
 
+#botaolink  {
+     font-size: 12px;
+     font-weight: 700;
+   text-decoration: underline;
+    }
+   #escuro body {
+    background-color:  #121212;
+       color: #E2E8F0;
+    }
 
-#janelacorpo #botaodourado{
-   width: 100%;
- height:48px;
-
-      font-size: 14px;
-}
-
-#janelarodape{
-      text-align:center;
-    margin-top:16px;
-  padding-top: 16px;
-   border-top:1px solid #E5E7EB;
-    font-size:14px;
-
-}
-
-
-#janelarodape p {
-     margin-bottom:8px;
-
-}
-
-#botaolink{
-  font-size:12px;
-   font-weight:700;
-    text-decoration: underline;
-}
-
-#escuro body {
-    background-color: #121212;
-
-    color:#E2E8F0;
-}
-
-#escuro #produto, #escuro #totalcaixa,
+ #escuro #produto, #escuro #totalcaixa,
 
 #escuro #repetir, #escuro #contatoform, #escuro #info, #escuro #menu,
-#escuro #janelacaixa, #escuro #botaoredondo, #escuro #botaoconta,
+ #escuro #janelacaixa, #escuro #botaoredondo, #escuro #botaoconta,
 #escuro #menulink, #escuro #campopesquisa, #escuro #janelacorpo input{
- background-color: #27272A;
+     background-color:  #27272A;
+border-color:  #3F3F46;
 
-  border-color:#3F3F46;
-
- color: #E2E8F0;
+color: #E2E8F0;
 }
 
 
-#escuro #botaoredondo, #escuro #botaoconta{
-  color:#E5A93B;
+#escuro #botaoredondo, #escuro #botaoconta {
+     color:#E5A93B;
 }
+   #escuro #textocinza, #escuro footer li, #escuro #menurodape{
 
-#escuro #textocinza, #escuro footer li, #escuro #menurodape{
 
-    color: #9CA3AF;
-}
+    color:  #9CA3AF;
+    }
 
-#escuro footer, #escuro #menurodape, #escuro #janelarodape{
-    border-color: #3F3F46;
-}
+#escuro footer, #escuro #menurodape, #escuro #janelarodape {
+       border-color: #3F3F46;
 
+   }
 
 @media (max-width: 768px){
-    header{
-      padding:0 16px;
+     header  {
+      padding : 0 16px;
+         }
+
+       #logo{
+font-size:  24px;
+
+        }
+   #pesquisa  {
+           display:  none;
+
+
        }
 
-       #logo {
-    font-size:24px;
-
-      }
-     #pesquisa {
-           display:none;
-    }
-
-    #banner {
-     height:320px;
+      #banner  {
+         height:320px;
      }
 
-    #bannertexto{
-      left: 24px;
- right:24px;
-    }
+ #bannertexto{
+      left:  24px;
+  right :  24px;
+      }
 
-      #bannertexto h2 {
- font-size: 30px;
+
+
+       #bannertexto h2{
+
+     font-size: 30px;
     }
 
     main{
-    padding: 0 16px 64px;
-    }
 
-     #barrainferior{
-
-    gap:40px;
+      padding:0 16px 64px;
     }
+         #barrainferior  {
+
+gap: 40px;
+
+
+       }
      #rodapecolunas{
-     grid-template-columns: 1fr;
-       }
-}
+     grid-template-columns:1fr;
 
-
-li{
-    
-   
-}
-@media (max-width: 480px){
-    header{
-         padding: 0 10px;
-     }
-
-    #cabecalholado{
-     gap: 8px;
-    }
-
-     #logo{
-        font-size:18px;
-    }
-
-       #nomeusuario, #itemqtd > span{
-        display: none;
-       }
-
-       #botaoconta{
-        width: 44px;
-         padding: 0px;
-    }
-
-  #barrainferior{
-           gap: 8px;
-    padding: 10px 8px;
-      }
-
-    #botaobarra, #paginaatual{
-           font-size: 10px;
-         padding: 8px 10px;
-     text-align: center;
-     }
-
-   #iteminfo h3{
-        font-size:14px;
-    }
-}
-
-#avisologin, #avisocadastro, #avisoperfil{
-    font-size: 13px;
-  font-weight: 600;
-    margin-bottom: 12px;
-}
-#avisologin:empty, #avisocadastro:empty, #avisoperfil:empty{
-    display: none;
-}
-#repetir span{
-     display: block;
-      font-size: 13px;
-    margin-bottom: 8px;
-}
-
-
-#info a, #botaosair{
-    color: #B81D13;
-     font-weight: 700;
-    text-decoration: underline;
-    font-size: 14px;
-}
-
-#escuro #info a, #escuro #botaosair{
-    color: #E5A93B;
-}
-
-#logo{
-       white-space: nowrap;
-}
-
-
-@media (max-width: 1100px){
-       #textocadastro{
-      display: none;
    }
 }
 
-@media (max-width: 480px){
+li{
+
+
+}
+@media (max-width: 480px)  {
+  header {
+          padding: 0 10px;
+     }
+
+       #cabecalholado{
+ gap: 8px;
+    }
+
+      #logo  {
+        font-size: 18px;
+    }
+     #nomeusuario, #itemqtd > span{
+            display:  none;
+         }
+
+        #botaoconta{
+          width: 44px;
+           padding: 0px;
+  }
+
+   #barrainferior{
+            gap:8px;
+ padding: 10px 8px;
+    }
+
+ #botaobarra, #paginaatual  {
+        font-size: 10px;
+         padding :8px 10px;
+
+     text-align :  center;
+      }
+   #iteminfo h3{
+    font-size:14px;
+     }
+}
+  #avisologin, #avisocadastro, #avisoperfil  {
+    font-size: 13px;
+font-weight:  600;
+     margin-bottom:  12px;
+}
+  #avisologin:empty, #avisocadastro:empty, #avisoperfil:empty{
+    display : none;
+}
+
+  #repetir span {
+        display: block;
+        font-size:  13px;
+        margin-bottom: 8px;
+   }
+
+
+#info a, #botaosair{
+        color:  #B81D13;
+     font-weight :  700;
+  text-decoration: underline;
+      font-size:14px;
+}
+
+#escuro #info a, #escuro #botaosair  {
+    color: #E5A93B;
+}
+
+  #logo {
+          white-space:  nowrap;
+}
+
+
+  @media (max-width: 1100px)  {
+       #textocadastro  {
+      display:none;
+   }
+    }
+
+  @media (max-width: 480px){
+
+
      #botaoredondo, #botaoconta{
         width: 38px;
-     height: 38px;
-    }
-}
+        height:  38px;
+      }
+  }
 
-#escuro #botaoredondo img, #escuro #botaoconta img{
-    filter: brightness(0) invert(61%) sepia(29%) saturate(863%) brightness(106%);
-}
+ #escuro #botaoredondo img, #escuro #botaoconta img {
 
-#escuro #redes img{
-  filter: invert(1);
+        filter:brightness(0) invert(61%) sepia(29%) saturate(863%) brightness(106%);
+ }
+
+#escuro #redes img  {
+
+      filter: invert(1);
+
 }

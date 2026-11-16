@@ -76,7 +76,7 @@ function renderizarProdutos(lista){
                 <div id="produtoimagem"><img src="${p.imagem}" alt="${p.sub}"></div>
                  <p id="produtonome">${p.sub}</p>
                 <p id="produtopreco">${formatarPreco(p.preco)}</p>
-                 <button id="botaodourado" onclick="adicionarProduto(${p.id})">Adicionar +</button>
+                 <button id="botaodourado" onclick="adicionarProduto(${p.id})">Adicionar </button>
 
              </div>`;
    });

@@ -354,12 +354,16 @@ fetch("http://localhost:5000/", {
     method: "POST",
     headers: { "Content-Type": "application/json" },
     body: JSON.stringify({
-        customer_name: "Lucas Andrade",
-        order_date: new Date().toISOString().slice(0, 19),
-        total_amount: 56.30,
+        customer_name: nomeDaConta,
+        order_date: new Date(Date.now() - new Date().getTimezoneOffset() * 60000).toISOString().slice(0, 19),
+        total_amount: Number(totalDoCarrinho),
         status: "Pendente"
     })
-});
+})
+.then(res => res.json())
+.then(dados => {
+    alert("Pedido enviado com sucesso!");
+})
 
 
 fetch("http://localhost:5000/", {

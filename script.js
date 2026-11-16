@@ -354,7 +354,7 @@ fetch("http://localhost:5000/", {
     method: "POST",
     headers: { "Content-Type": "application/json" },
     body: JSON.stringify({
-        customer_name: nomeDaConta,
+        customer_name:localStorage.getItem("lura_usuario") || "Cliente",
         order_date: new Date(Date.now() - new Date().getTimezoneOffset() * 60000).toISOString().slice(0, 19),
         total_amount: Number(totalDoCarrinho),
         status: "Pendente"

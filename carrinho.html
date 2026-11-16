@@ -1,216 +1,246 @@
- <!DOCTYPE html>
+    <!DOCTYPE html>
 <html lang="pt-BR">
  <head>
- <meta charset="UTF-8">
+     <meta charset="UTF-8">
  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <title>Lura Foods | Carrinho e Pedidos</title>
-      <link rel="icon" type="image/gif" href="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7">
+          <title>Lura Foods | Carrinho e Pedidos</title>
+        <link rel="icon" type="image/gif" href="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7">
+
+ <link rel="preconnect" href="https://fonts.googleapis.com">
+      <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+          <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;600;700;800&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
 
 
-<link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-      <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;600;700;800&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
-     
+          <link rel="stylesheet" href="style.css">
+        <link rel="stylesheet" href="carrinho.css">
 
-       <link rel="stylesheet" href="style.css">
-    <link rel="stylesheet" href="carrinho.css">
+<script src="script.js"></script>
+   </head>
 
- <script src="script.js"></script>
-</head>
+
 <body>
 
    <header>
 
         <div id="cabecalholado">
-           <button id="botaoredondo" onclick="toggleDrawer(true)" aria-label="Abrir menu">
+             <button id="botaoredondo" onclick="toggleDrawer(true)" aria-label="Abrir menu">
              <img src="menu.png" alt="menu">
             </button>
-         <h1><a id="logo" href="index.html">Lura Foods</a></h1> </div>
+        <h1><a id="logo" href="index.html">Lura Foods</a></h1>  </div>
+       <div id="pesquisa">
+                <input type="search"  id="campopesquisa" onkeyup="filtrarProdutos(event)" placeholder="O que você está buscando?">
+                <img id="lupa" src="lupa.png" alt="lupa">
+        </div>
+            <div id="cabecalholado">
+              <button id="botaoredondo"  onclick="toggleDarkMode()" title="Alternar modo escuro">
+                <img id="iconetema" src="lua.png" alt="lua">
+               </button>
+            <button id="botaoconta" onclick="minhaConta()" title="Minha conta">
+               <img src="conta.png" alt="conta">
+           <span id="nomeusuario">Entrar</span>
 
-     <div id="pesquisa">
-             <input type="search" id="campopesquisa" onkeyup="filtrarProdutos(event)" placeholder="O que você está buscando?">
-            <img id="lupa" src="lupa.png" alt="lupa">
-        </div>
-           <div id="cabecalholado">
-              <button id="botaoredondo" onclick="toggleDarkMode()" title="Alternar modo escuro">
-                   <img id="iconetema" src="lua.png" alt="lua">
-            </button>
-         <button id="botaoconta" onclick="minhaConta()" title="Minha conta">
-                <img src="conta.png" alt="conta">
-               <span id="nomeusuario">Entrar</span>
-            </button>
+               </button>
          <span id="botaocadastro"><button id="botaoconta" onclick="abrirModalAuth('cadastro')" title="Criar conta">
-                 <img src="cadastro.png" alt="cadastro">
-               <span id="textocadastro">Cadastrar</span>
+
+                 <img src="cadastro.png"   alt="cadastro">
+
+                   <span id="textocadastro">Cadastrar</span>
+
+
              </button></span>
-        <a id="botaoredondo" href="carrinho.html" title="Carrinho">
-             <img src="carrinho.png" alt="carrinho">
-                <span id="contadorcarrinho">0</span>
-          </a>
-        </div>
+       <a id="botaoredondo" href="carrinho.html"   title="Carrinho">
+
+               <img src="carrinho.png"   alt="carrinho">
+                   <span id="contadorcarrinho">0</span>
+           </a>
+     </div>
+
  </header>
 
       <div id="fundomenu" onclick="fecharDrawer()"></div>
-     
 
-       <aside id="menu">
-      <div id="menutopo">
+
+           <aside id="menu">
+         <div id="menutopo">
          <h2>Lura Foods</h2>
-            <button id="botaofechar" onclick="fecharDrawer()">&times;</button>
-      </div>
-        <nav id="menulinks">
-            <a id="menulink" href="index.html">Catálogo de Produtos</a>
-            <a id="menulink" href="carrinho.html">Carrinho E Pedidos</a>
+        <button id="botaofechar" onclick="fecharDrawer()">&times;</button>
+  </div>
+      <nav id="menulinks">
+
+               <a id="menulink" href="index.html">Catálogo de Produtos</a>
+            <a id="menulink"  href="carrinho.html">Carrinho E Pedidos</a>
 
             <a id="menulink" href="contato.html">Fale Conosco / Contato</a>
-               <button id="menulink" onclick="minhaConta(); fecharDrawer();">Minha Conta</button> <button id="menulink" onclick="toggleDarkMode(); fecharDrawer();">
+             <button id="menulink" onclick="minhaConta(); fecharDrawer();">Minha Conta</button>  <button id="menulink" onclick="toggleDarkMode(); fecharDrawer();">
                 <span>Modo Escuro / Claro</span>
-              <span id="iconetemamenu">🌙</span>
+               <span id="iconetemamenu">🌙</span>
               </button>
-     </nav> <div id="menurodape">
-            <p>Atendimento: (31) 3333-4444</p>
-            <p>Seg a Dom: 17h às 23h30</p>
-        </div>
 
-   </aside>
-    <div id="banner">
-     <img id="bannerfoto" src="banner.jpg" alt="Hambúrguer artesanal">
+
+     </nav>   <div id="menurodape">
+
+              <p>Atendimento: (31) 3333-4444</p>
+            <p>Seg a Dom: 17h às 23h30</p>
+
+         </div>
+
+</aside>
+     <div id="banner">
+
+ <img id="bannerfoto" src="banner.jpg"   alt="Hambúrguer artesanal">
+
           <div id="bannersombra"></div>
 
-      <div id="bannertexto">
+         <div id="bannertexto">
 
             <h2>O SABOR QUE DOMINA SUA FOME</h2>
-            <p>Hamburgueria Artesanal</p>
+        <p>Hamburgueria Artesanal</p>
+            </div>
         </div>
-    </div>
 
-  <main>
-          <section> <h2 id="titulosecao">Carrinho E Pedidos</h2>
+ <main>
+          <section>   <h2 id="titulosecao">Carrinho E Pedidos</h2>
             <div id="itenscarrinho">
-               </div>
-         <div id="totalcaixa">
+                 </div>
+          <div id="totalcaixa">
+
              <span>Total: <strong id="valortotal">R$ 0,00</strong></span>
-                <button id="botaodourado" onclick="finalizarCompra()">Finalizar Compra</button>
+                   <button id="botaodourado" onclick="finalizarCompra()">Finalizar Compra</button>
 
-               </div>
+                   </div>
+
+
       </section>
-      <hr>
+         <hr>
 
+          <section>
 
-       <section>
          <h2 id="titulosecao">Pedidos Feitos</h2>
-               <div id="pedidosgrade">
+                  <div id="pedidosgrade">
+
             </div>
      </section>
+         <hr>
+    <section>
 
-        <hr>
-       <section>
-         <h2 id="titulorepetir">Peça de novo!</h2>
+            <h2 id="titulorepetir">Peça de novo!</h2>
+
             <div id="repetirgrade">
              </div>
-
           </section>
   </main>
 
-   <nav id="barrainferior">
+<nav id="barrainferior">
 
-      <a id="botaobarra" href="index.html">Catálogo de Produtos</a>
-        <a id="paginaatual" href="carrinho.html">Carrinho E Pedidos</a>
+  <a id="botaobarra" href="index.html">Catálogo de Produtos</a>
+
+        <a id="paginaatual"  href="carrinho.html">Carrinho E Pedidos</a>
           <a id="botaobarra" href="contato.html">Contato</a>
-        <a id="botaobarra" href="perfil.html">Perfil</a>
+        <a id="botaobarra"  href="perfil.html">Perfil</a>
     </nav>
 
     <footer>
         <div id="rodapecolunas">
 
 
+
           <div>
-              <h4>Lura Foods</h4>
+                 <h4>Lura Foods</h4>
 
                  <ul>
-                     <li ><a href="#">Portal do Parceiro</a></li>
+                         <li ><a href="#">Portal do Parceiro</a></li>
+
                     <li ><a href="#">Carreiras na Lura</a></li>
-                  <li ><a href="#">Blog para Parceiros</a></li>
-
-                </ul>
-
+                      <li ><a href="#">Blog para Parceiros</a></li>
+              </ul>
                  <div id="redes">
-                    <a href="#" aria-label="Facebook">
+                        <a href="#" aria-label="Facebook">
                         <img src="facebook.png" alt="facebook">
-                   </a> <a href="#" aria-label="Instagram">
-                        <img src="instagram.png" alt="instagram">
+
+                   </a>   <a href="#" aria-label="Instagram">
+
+                            <img src="instagram.png" alt="instagram">
                     </a>
                     <a href="#" aria-label="X (Twitter)">
+
                            <img src="x.png" alt="x">
-                    </a> <a href="#" aria-label="YouTube">
+                 </a>   <a href="#" aria-label="YouTube">
                         <img src="youtube.png" alt="youtube">
                      </a>
                   </div>
+
             </div>
 
              <div>
-                   <h4>Descubra</h4> <ul>
-                    <li><a href="#">Cadastre seu restaurante</a></li>
+                   <h4>Descubra</h4>  <ul>
+                     <li><a href="#">Cadastre seu restaurante</a></li>
+
+
                     <li><a href="#">Cadastre seu mercado</a></li>
-                </ul> </div>
 
-            <div>
+             </ul> </div>
+               <div>
                 <h4>Saiba mais</h4>
-              <ul>
-                    <li ><a href="#">Privacidade</a></li>
-                    <li><a href="#">Código de conduta</a></li>
-             </ul>
-             </div> </div>
- </footer>
-<div id="janelalogin">
 
+                 <ul>
+                  <li ><a href="#">Privacidade</a></li>
+                 <li><a href="#">Código de conduta</a></li>
+                </ul>
+              </div>   </div>
+
+     </footer>
+    <div id="janelalogin">
      <div id="janelacaixa">
-            <div id="janelatopo"> <div></div>
-                 <span>Lura Foods</span>
-                   <button id="botaofechar" onclick="fecharModalAuth()">&times;</button>
+            <div id="janelatopo">  <div></div>
+                     <span>Lura Foods</span>
+
+                   <button id="botaofechar"  onclick="fecharModalAuth()">&times;</button>
 
           </div>
-
 
             <div id="janelacorpo">
                  <div id="formlogin">
                  <h2>LOGIN</h2>
-                    <form novalidate onsubmit="executarLogin(event)"> <input type="email" id="loginemail" maxlength="80" placeholder="INSIRA SEU E-MAIL">
-                        <input type="password" id="loginsenha" maxlength="20" placeholder="INSIRA SUA SENHA"> <p id="avisologin"></p>
-     
+                    <form novalidate onsubmit="executarLogin(event)">   <input type="email" id="loginemail"  maxlength="80" placeholder="INSIRA SEU E-MAIL">
+                         <input type="password"   id="loginsenha" maxlength="20" placeholder="INSIRA SUA SENHA"> <p id="avisologin"></p>
+
 
                       <button id="botaodourado" type="submit">Enviar</button>
 
-                        <div id="janelarodape">
-                             <p>Não tem uma conta?<br>Crie uma</p> <button id="botaodourado" type="button" onclick="alternarFormAuth('cadastro')">Criar conta</button>
+                      <div id="janelarodape">
+                             <p>Não tem uma conta?<br>Crie uma</p>   <button id="botaodourado" type="button" onclick="alternarFormAuth('cadastro')">Criar conta</button>
                         </div>
-
                     </form>
                 </div>
 
-                <div id="formcadastro">
-                    <h2>CRIAR CONTA</h2>
-                     <form novalidate onsubmit="executarCadastro(event)">
-                        <input type="text" id="cadnome" maxlength="60" placeholder="NOME COMPLETO">
-                         <input type="email" id="cademail" maxlength="80" placeholder="SEU E-MAIL"> <input type="text" id="cadcpf" maxlength="14" inputmode="numeric" oninput="mascaraCPF(this)" placeholder="CPF (000.000.000-00)"> <input type="tel" id="cadtelefone" maxlength="15" inputmode="numeric" oninput="mascaraTelefone(this)" placeholder="TELEFONE ((31) 99999-9999)"> <input type="text" id="cadcep" maxlength="9" inputmode="numeric" oninput="mascaraCEP(this)" placeholder="CEP (00000-000)"> <input type="text" id="cadendereco" maxlength="80" placeholder="ENDEREÇO (RUA, BAIRRO)"> <input type="text" id="cadnumero" maxlength="6" inputmode="numeric" oninput="somenteNumeros(this)" placeholder="NÚMERO">
-                     <input type="password" id="cadsenha" maxlength="20" placeholder="CRIE SUA SENHA">
-                         <input type="password" id="cadconfirmasenha" maxlength="20" placeholder="CONFIRME SUA SENHA"> <p id="avisocadastro"></p>
+            <div id="formcadastro">
+                   <h2>CRIAR CONTA</h2>
+                 <form novalidate onsubmit="executarCadastro(event)">
+
+
+                     <input type="text" id="cadnome" maxlength="60" placeholder="NOME COMPLETO">
+
+                         <input type="email" id="cademail" maxlength="80" placeholder="SEU E-MAIL">  <input type="text"  id="cadcpf"   maxlength="14" inputmode="numeric" oninput="mascaraCPF(this)" placeholder="CPF (000.000.000-00)">  <input type="tel"   id="cadtelefone" maxlength="15" inputmode="numeric"   oninput="mascaraTelefone(this)"  placeholder="TELEFONE ((31) 99999-9999)">  <input type="text"  id="cadcep"  maxlength="9" inputmode="numeric" oninput="mascaraCEP(this)" placeholder="CEP (00000-000)">   <input type="text" id="cadendereco" maxlength="80" placeholder="ENDEREÇO (RUA, BAIRRO)">  <input type="text" id="cadnumero" maxlength="6" inputmode="numeric"  oninput="somenteNumeros(this)" placeholder="NÚMERO">
+
+                 <input type="password" id="cadsenha" maxlength="20"  placeholder="CRIE SUA SENHA">
+
+
+                       <input type="password" id="cadconfirmasenha"  maxlength="20" placeholder="CONFIRME SUA SENHA">  <p id="avisocadastro"></p>
                         <button id="botaodourado" type="submit">Cadastrar</button>
-     
 
 
-                     <div id="janelarodape">
-                           <button id="botaolink" type="button" onclick="alternarFormAuth('login')">Já tem uma conta? Fazer Login</button> </div>
-                       </form>
+                   <div id="janelarodape">
+                       <button id="botaolink" type="button"   onclick="alternarFormAuth('login')">Já tem uma conta? Fazer Login</button> </div>
+                   </form>
                 </div>
-             </div>
+                </div>
         </div>
-    </div>
+  </div>
 
-    
 
-  
 
- </body>
+
+
+</body>
 </html>
